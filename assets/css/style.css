@@ -99,11 +99,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ico-s { width: 14px; height: 14px; }
 .mark {
   display: inline-block; width: 1em; height: 1.02em; flex: none;
-  background: url("../brand/orca-mark-bold.svg?v=202611201826") center / contain no-repeat;
+  background: url("../brand/orca-mark-bold.svg?v=20261120191210") center / contain no-repeat;
 }
 /* on black surfaces the ring turns white, the R stays red */
-.hub-core .mark, .match-core .mark { background-image: url("../brand/orca-mark-bold-dark.svg?v=202611201826"); }
-.cmp-us .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=202611201826"); }
+.hub-core .mark, .match-core .mark { background-image: url("../brand/orca-mark-bold-dark.svg?v=20261120191210"); }
+.cmp-us .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120191210"); }
 .wordmark { height: 11px; width: auto; aspect-ratio: 166 / 20; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: square; overflow: visible; }
 
 /* ---------- Pills ---------- */
@@ -350,16 +350,17 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .pv { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "steps stage" "more stage"; grid-template-rows: auto 1fr; column-gap: clamp(28px, 4vw, 64px); max-width: 1240px; margin: clamp(40px, 5vw, 64px) auto 0; align-items: start; }
 .pv-steps { grid-area: steps; display: flex; flex-direction: column; gap: 6px; }
 .pv-step {
-  display: grid; grid-template-columns: 44px minmax(0, 1fr); grid-template-areas: "num name" ". desc" ". bar"; column-gap: 14px; align-items: center;
+  display: grid; grid-template-columns: 52px minmax(0, 1fr); grid-template-areas: "num name" ". desc" ". bar"; column-gap: 18px; align-items: center;
   width: 100%; padding: 14px 16px; border-radius: 22px; text-align: left;
   transition: background-color 400ms var(--ease-out), box-shadow 400ms var(--ease-out);
 }
 .pv-step:hover { background: var(--surface); }
 .pv-step[aria-selected="true"] { background: var(--sheet); box-shadow: var(--shadow-float); }
-.pv-num { grid-area: num; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--surface-2); color: var(--ink-faint); font-weight: 600; font-size: 16px; transition: background-color 400ms var(--ease-out), color 400ms var(--ease-out); }
-.pv-step[aria-selected="true"] .pv-num { background: var(--signal-soft); color: var(--signal-ink); }
+.pv-num { grid-area: num; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 999px; background: var(--surface-2); color: var(--ink-faint); font-weight: 600; font-size: 16px; transition: background-color 400ms var(--ease-out), color 400ms var(--ease-out), box-shadow 400ms var(--ease-out); }
+.pv-num .ico { width: 22px; height: 22px; }
+.pv-step[aria-selected="true"] .pv-num { background: var(--signal); color: var(--on-signal); box-shadow: 0 10px 24px var(--red-shadow); }
 .pv-name { grid-area: name; font-size: clamp(17px, 1.5vw, 21px); font-weight: 500; color: var(--ink-faint); transition: color 400ms var(--ease-out); }
-.pv-step[aria-selected="true"] .pv-name { color: var(--ink); }
+.pv-step[aria-selected="true"] .pv-name { color: var(--signal-ink); }
 .pv-desc { grid-area: desc; display: grid; grid-template-rows: 0fr; transition: grid-template-rows 500ms var(--ease-out); }
 .pv-desc > span { min-height: 0; overflow: hidden; font-size: 15px; color: var(--ink-soft); opacity: 0; transition: opacity 400ms var(--ease-out); }
 .pv-desc b { color: var(--ink); font-weight: 500; }
@@ -381,6 +382,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .scene { position: absolute; inset: 0; display: grid; place-items: center; padding: clamp(16px, 4%, 36px); transition: opacity 300ms var(--ease-out), transform 400ms var(--ease-out); }
 .js .scene:not(.is-front) { opacity: 0; transform: scale(0.98); pointer-events: none; }
+.scene.is-front { z-index: 2; }
+/* the next card waits behind the front one, like a stack */
+.js .scene.is-next { z-index: 1; opacity: 0.5; transform: translateY(9%) scale(0.88); filter: blur(1.5px); }
+/* scenes without their own card get one, so the stack stays clean */
+.sc-hub::before, .sc-flow::before { content: ""; position: absolute; inset: 6% 8%; border-radius: 26px; background: var(--sheet); box-shadow: var(--shadow-soft); }
+.sc-hub > *, .sc-flow > * { position: relative; z-index: 1; }
+.sc-hub > .hub, .sc-hub > .hub-core, .sc-hub > .node { position: absolute; }
+.js .scene.is-next [style*="--i"] { opacity: 1; transform: none; }
 .no-js .scene:not(.is-front) { display: none; }
 .ui-card { width: min(100%, 560px); padding: 22px; border-radius: 22px; background: var(--sheet); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 10px; }
 .ui-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--rule); margin-bottom: 4px; }

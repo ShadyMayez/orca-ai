@@ -230,6 +230,7 @@
       scenes.forEach(function (s, k) {
         var on = k === idx;
         s.classList.toggle('is-front', on);
+        s.classList.toggle('is-next', k === (idx + 1) % scenes.length);
         s.classList.remove('play');
         if (on) { void s.offsetWidth; s.classList.add('play'); }
       });
