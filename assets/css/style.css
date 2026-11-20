@@ -99,11 +99,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ico-s { width: 14px; height: 14px; }
 .mark {
   display: inline-block; width: 1em; height: 1.02em; flex: none;
-  background: url("../brand/orca-mark-bold.svg?v=20261120191210") center / contain no-repeat;
+  background: url("../brand/orca-mark-bold.svg?v=20261120213350") center / contain no-repeat;
 }
 /* on black surfaces the ring turns white, the R stays red */
-.hub-core .mark, .match-core .mark { background-image: url("../brand/orca-mark-bold-dark.svg?v=20261120191210"); }
-.cmp-us .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120191210"); }
+.hub-core .mark, .match-core .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120213350"); }
+.cmp-us .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120213350"); }
 .wordmark { height: 11px; width: auto; aspect-ratio: 166 / 20; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: square; overflow: visible; }
 
 /* ---------- Pills ---------- */
@@ -411,7 +411,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .pulses path { stroke: var(--signal); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-dasharray: 14 200; stroke-dashoffset: 14; opacity: 0; }
 .scene.play .pulses path { animation: pulse 2.2s linear infinite; animation-delay: calc(var(--k) * 0.37s); }
 @keyframes pulse { 0% { stroke-dashoffset: 14; opacity: 1; } 80% { opacity: 1; } 100% { stroke-dashoffset: -140; opacity: 0; } }
-.hub-core { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: grid; place-items: center; width: 92px; height: 92px; border-radius: 28px; background: var(--btn); color: var(--btn-ink); font-size: 46px; box-shadow: 0 0 0 10px var(--signal-soft), var(--shadow-soft); }
+.hub-core { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: grid; place-items: center; width: 92px; height: 92px; border-radius: 28px; background: linear-gradient(165deg, var(--signal-hi), var(--signal) 45%, var(--signal-lo)); color: var(--on-signal); font-size: 46px; box-shadow: 0 0 0 10px var(--signal-soft), 0 14px 32px var(--red-shadow); }
 .scene.play .hub-core { animation: core 2.2s ease-in-out infinite; }
 @keyframes core { 50% { box-shadow: 0 0 0 18px var(--signal-soft), var(--shadow-soft); } }
 .node { position: absolute; left: var(--x); top: var(--y); translate: -50% -50%; padding: 8px 14px; border-radius: 999px; background: var(--sheet); box-shadow: var(--shadow-float); font-size: 14px; font-weight: 500; white-space: nowrap; }
@@ -468,7 +468,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .match-facts b { color: var(--ink); font-weight: 600; }
 .match-stage { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 12px; max-width: 1240px; margin: clamp(40px, 5vw, 64px) auto 0; }
 .match-grid { display: contents; }
-.match-core { grid-column: 4; grid-row: 1 / 4; display: grid; place-items: center; border-radius: 24px; background: var(--btn); color: var(--btn-ink); font-size: clamp(48px, 6vw, 84px); }
+.match-core { grid-column: 4; grid-row: 1 / 4; display: grid; place-items: center; border-radius: 24px; background: linear-gradient(165deg, var(--signal-hi), var(--signal) 45%, var(--signal-lo)); color: var(--on-signal); font-size: clamp(48px, 6vw, 84px); box-shadow: 0 24px 60px var(--red-shadow); }
 .mf { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; aspect-ratio: 1; padding: 14px; border-radius: 20px; background: var(--surface); font-size: 13.5px; font-weight: 500; color: var(--ink-soft); transition: background-color 500ms var(--ease-out), color 500ms var(--ease-out), transform 500ms var(--ease-out); }
 .mf > .ico { width: 22px; height: 22px; }
 .mf-badge { position: absolute; right: 10px; top: 10px; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 999px; background: var(--signal); color: var(--on-signal); transform: scale(0); transition: transform 450ms var(--ease-out); }
