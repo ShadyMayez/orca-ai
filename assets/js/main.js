@@ -147,15 +147,14 @@
     layout();
   })();
 
-  /* ---------- How we work: curved, drifting card row ---------- */
-  (function arcRow() {
-    var arc = $('[data-arc]');
-    if (!arc) return;
+  /* ---------- Solutions and How we work: curved, drifting card rows ---------- */
+  $$('[data-arc]').forEach(function arcRow(arc) {
     var track = $('.arc-track', arc);
     if (reduce.matches) { arc.classList.add('static'); return; }
-    // Two extra copies so the loop never shows a gap.
+    // Extra copies (at least 12 cards in all) so the loop never shows a gap.
     var originals = $$('.arc-card', track);
-    for (var c = 0; c < 2; c++) originals.forEach(function (card) {
+    var copies = Math.max(2, Math.ceil(12 / originals.length) - 1);
+    for (var c = 0; c < copies; c++) originals.forEach(function (card) {
       var copy = card.cloneNode(true); copy.setAttribute('aria-hidden', 'true'); track.appendChild(copy);
     });
     var cards = $$('.arc-card', track);
@@ -197,7 +196,7 @@
       es.forEach(function (en) { if (en.isIntersecting) start(); else stop(); });
     }, { rootMargin: '100px 0px' }).observe(arc);
     place();
-  })();
+  });
 
   /* ---------- Scroll reveal ---------- */
   var rv = $$('.rv');

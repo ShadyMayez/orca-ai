@@ -263,79 +263,57 @@
     <section class="section ways" id="solutions" aria-labelledby="ways-title">
       <h2 id="ways-title" class="h2 rv">Pick the outcome. We build the <span class="accent">system.</span></h2>
       <p class="h2-sub rv">Four ways to put AI to work. Orca scopes it, builds it into your stack and keeps it running.</p>
-      <div class="pv pv-ways rv" data-pv data-ms="4500">
-        <ol class="pv-steps" role="tablist" aria-label="Solutions">
-          <li><button class="pv-step" type="button" role="tab" id="way-0" aria-controls="ways-panel" aria-selected="true">
-            <span class="pv-num pv-icon" aria-hidden="true"><svg class="ico"><use href="#i-zap"/></svg></span><span class="pv-name">Automation solutions</span>
-            <span class="pv-desc"><span><b>The repetitive work leaves your team's desk.</b> Data entry, follow-ups, reports and approvals run on rules and AI. Best for operations drowning in routine.</span></span><span class="pv-bar"><i></i></span></button></li>
-          <li><button class="pv-step" type="button" role="tab" id="way-1" aria-controls="ways-panel" aria-selected="false" tabindex="-1">
-            <span class="pv-num pv-icon" aria-hidden="true"><svg class="ico"><use href="#i-plug"/></svg></span><span class="pv-name">AI integrations</span>
-            <span class="pv-desc"><span><b>AI plugged into the systems you already pay for.</b> CRM, ERP, inbox, sheets and chat share one brain. Best for teams that hate switching tabs.</span></span><span class="pv-bar"><i></i></span></button></li>
-          <li><button class="pv-step" type="button" role="tab" id="way-2" aria-controls="ways-panel" aria-selected="false" tabindex="-1">
-            <span class="pv-num pv-icon" aria-hidden="true"><svg class="ico"><use href="#i-flow"/></svg></span><span class="pv-name">AI workflows</span>
-            <span class="pv-desc"><span><b>Multi-step processes that run themselves.</b> Trigger, classify, enrich, approve and act, with a person in the loop where it matters. Best for processes with many hand-offs.</span></span><span class="pv-bar"><i></i></span></button></li>
-          <li><button class="pv-step" type="button" role="tab" id="way-3" aria-controls="ways-panel" aria-selected="false" tabindex="-1">
-            <span class="pv-num pv-icon" aria-hidden="true"><svg class="ico"><use href="#i-bot"/></svg></span><span class="pv-name">AI agents and chatbots</span>
-            <span class="pv-desc"><span><b>Agents that talk to customers and act for them.</b> Embedded in WhatsApp, your website, apps and internal tools. Best for sales and support around the clock.</span></span><span class="pv-bar"><i></i></span></button></li>
-        </ol>
-        <div class="pv-stage" role="tabpanel" id="ways-panel" aria-labelledby="way-0">
-          <div class="pv-frame">
-            <!-- 0 automation -->
-            <div class="scene sc-auto is-front">
-              <div class="ui-card">
-                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-zap"/></svg>Ops autopilot</span><span class="ui-pill">Running</span></div>
-                <ul class="tasks">
-                  <li style="--i:0"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Invoice from Nile Supplies read and filed</li>
-                  <li style="--i:1"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>New lead routed to the sales channel</li>
-                  <li style="--i:2"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Refund under policy approved</li>
-                  <li style="--i:3"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Supplier reminder emailed</li>
-                  <li style="--i:4"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Weekly report posted to Slack</li>
-                </ul>
-              </div>
-            </div>
-            <!-- 1 integrations hub -->
-            <div class="scene sc-hub">
-              <svg class="hub" viewBox="0 0 400 400" aria-hidden="true">
-                <g class="spokes">
-                  <path d="M200 200L200 60"/><path d="M200 200L321 130"/><path d="M200 200L321 270"/><path d="M200 200L200 340"/><path d="M200 200L79 270"/><path d="M200 200L79 130"/>
-                </g>
-                <g class="pulses">
-                  <path style="--k:0" d="M200 200L200 60"/><path style="--k:1" d="M200 200L321 130"/><path style="--k:2" d="M200 200L321 270"/><path style="--k:3" d="M200 200L200 340"/><path style="--k:4" d="M200 200L79 270"/><path style="--k:5" d="M200 200L79 130"/>
-                </g>
+      <div class="arc rv" data-arc>
+        <ol class="arc-track" aria-label="Solutions">
+          <li class="arc-card">
+            <div class="ac-head"><span class="ac-num"><svg class="ico"><use href="#i-zap"/></svg></span><b>Automation solutions</b></div>
+            <ul class="tasks">
+              <li><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Invoice read and filed</li>
+              <li><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>New lead routed to sales</li>
+              <li><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Refund under policy approved</li>
+              <li><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Weekly report posted</li>
+            </ul>
+            <p class="ac-cap"><b>Repetitive work leaves your desk.</b> Data entry, follow-ups and reports run themselves.</p>
+          </li>
+          <li class="arc-card">
+            <div class="ac-head"><span class="ac-num"><svg class="ico"><use href="#i-plug"/></svg></span><b>AI integrations</b></div>
+            <div class="mini-hub" aria-hidden="true">
+              <svg class="hub" viewBox="0 0 400 400">
+                <g class="spokes"><path d="M200 200L200 60"/><path d="M200 200L321 130"/><path d="M200 200L321 270"/><path d="M200 200L200 340"/><path d="M200 200L79 270"/><path d="M200 200L79 130"/></g>
+                <g class="pulses"><path style="--k:0" d="M200 200L200 60"/><path style="--k:1" d="M200 200L321 130"/><path style="--k:2" d="M200 200L321 270"/><path style="--k:3" d="M200 200L200 340"/><path style="--k:4" d="M200 200L79 270"/><path style="--k:5" d="M200 200L79 130"/></g>
               </svg>
               <span class="hub-core"><span class="mark"></span></span>
               <span class="node" style="--x:50%;--y:15%">CRM</span>
-              <span class="node" style="--x:80.25%;--y:32.5%">ERP</span>
-              <span class="node" style="--x:80.25%;--y:67.5%">Inbox</span>
+              <span class="node" style="--x:80%;--y:32.5%">ERP</span>
+              <span class="node" style="--x:80%;--y:67.5%">Inbox</span>
               <span class="node" style="--x:50%;--y:85%">Sheets</span>
-              <span class="node" style="--x:19.75%;--y:67.5%">WhatsApp</span>
-              <span class="node" style="--x:19.75%;--y:32.5%">Slack</span>
+              <span class="node" style="--x:20%;--y:67.5%">WhatsApp</span>
+              <span class="node" style="--x:20%;--y:32.5%">Slack</span>
             </div>
-            <!-- 2 workflow -->
-            <div class="scene sc-flow">
-              <ol class="flow">
-                <li style="--i:0"><svg class="ico"><use href="#i-mail"/></svg><b>Trigger</b><span>Order email arrives</span></li>
-                <li style="--i:1"><svg class="ico"><use href="#i-tag"/></svg><b>Classify</b><span>Bulk order, priority</span></li>
-                <li style="--i:2"><svg class="ico"><use href="#i-db"/></svg><b>Enrich</b><span>Stock and pricing pulled</span></li>
-                <li style="--i:3"><svg class="ico"><use href="#i-approve"/></svg><b>Approve</b><span>Manager taps approve</span></li>
-                <li style="--i:4"><svg class="ico"><use href="#i-send"/></svg><b>Act</b><span>Quote sent, CRM updated</span></li>
-              </ol>
+            <p class="ac-cap"><b>AI inside the tools you pay for.</b> CRM, ERP, inbox and chat share one brain.</p>
+          </li>
+          <li class="arc-card">
+            <div class="ac-head"><span class="ac-num"><svg class="ico"><use href="#i-flow"/></svg></span><b>AI workflows</b></div>
+            <ol class="flow mini-flow">
+              <li><svg class="ico"><use href="#i-mail"/></svg><b>Trigger</b><span>Order email arrives</span></li>
+              <li><svg class="ico"><use href="#i-tag"/></svg><b>Classify</b><span>Bulk order, priority</span></li>
+              <li><svg class="ico"><use href="#i-approve"/></svg><b>Approve</b><span>Manager taps approve</span></li>
+              <li><svg class="ico"><use href="#i-send"/></svg><b>Act</b><span>Quote sent, CRM updated</span></li>
+            </ol>
+            <p class="ac-cap"><b>Processes that run themselves.</b> A person in the loop where it matters.</p>
+          </li>
+          <li class="arc-card">
+            <div class="ac-head"><span class="ac-num"><svg class="ico"><use href="#i-bot"/></svg></span><b>AI agents and chatbots</b></div>
+            <div class="mini-chat">
+              <p class="bub in" lang="ar" dir="rtl">عايز أعرف حالة الطلب ٤٤٧١</p>
+              <p class="bub out">It left the warehouse this morning and arrives Thursday.</p>
+              <p class="handoff"><svg class="ico"><use href="#i-users"/></svg>Hands over to a human when needed</p>
             </div>
-            <!-- 3 agent chat -->
-            <div class="scene sc-agent">
-              <div class="ui-card chat">
-                <div class="ui-head"><span class="ui-title"><span class="mark"></span>Orca agent</span><span class="ui-pill">Online</span></div>
-                <p class="bub in" style="--i:0" lang="ar" dir="rtl">عايز أعرف حالة الطلب رقم ٤٤٧١</p>
-                <p class="bub out" style="--i:1">Order 4471 left the warehouse this morning and arrives Thursday. Want delivery updates on WhatsApp?</p>
-                <p class="bub in" style="--i:2">Yes, and can I change the address?</p>
-                <p class="bub out" style="--i:3">Sure. I've passed you to Ahmed in logistics, he has your order open now.</p>
-                <p class="handoff" style="--i:4"><svg class="ico"><use href="#i-users"/></svg>Handed to a human with full context</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="pv-more" href="#contact"><span>Talk to us about <span class="pv-more-name">automation solutions</span></span><svg class="ico"><use href="#i-arrow"/></svg></a>
+            <p class="ac-cap"><b>Agents that talk and act.</b> On WhatsApp, your website, apps and internal tools.</p>
+          </li>
+        </ol>
       </div>
+      <a class="pv-more arc-more rv" href="#contact"><span>Talk to us about your build</span><svg class="ico"><use href="#i-arrow"/></svg></a>
     </section>
 
     <!-- CHAPTER -->
