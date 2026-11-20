@@ -1,0 +1,14 @@
+{
+  "extraKnownMarketplaces": {
+    "marketingskills": { "source": { "source": "github", "repo": "coreyhaines31/marketingskills" } },
+    "egm": { "source": { "source": "github", "repo": "google/elephant-goldfish-model" } },
+    "taste-skill": { "source": { "source": "github", "repo": "Leonxlnx/taste-skill" } },
+    "hallmark": { "source": { "source": "github", "repo": "Nutlope/hallmark" } }
+  },
+  "enabledPlugins": {
+    "marketing-skills@marketingskills": true,
+    "egm@egm": true,
+    "taste-skill@taste-skill": true,
+    "hallmark@hallmark": true
+  }
+}

@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orca AI · AI agents, automations and integrations</title>
+<meta name="description" content="Orca AI builds automations, AI integrations, workflows, agents and chatbots that live inside the tools your team already uses.">
+<meta name="theme-color" content="#0A0B0D">
+<meta property="og:title" content="Orca AI">
+<meta property="og:description" content="Put the busywork on AI autopilot. Automations, integrations, workflows, agents and chatbots built into your stack.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://shadymayez.github.io/orca-ai/assets/brand/og.png">
+<meta property="og:url" content="https://shadymayez.github.io/orca-ai/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://shadymayez.github.io/orca-ai/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800;900&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.remove('no-js'); d.classList.add('js');
+    try { var t = localStorage.getItem('orca-theme'); if (t) d.setAttribute('data-theme', t); } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v3a6 6 0 0 1-12 0V8zM12 17v5"/></symbol>
+    <symbol id="i-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M9 6h4a3 3 0 0 1 3 3v6"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M2 13v3M22 13v3"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0M12 18l4-5"/></symbol>
+    <symbol id="i-approve" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 11l2 2 4-4"/></symbol>
+    <symbol id="i-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M5.6 5.6l3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6V2z"/><path d="M14 2v5h5M9 13h7M9 17h5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V3h9l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 4a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6.3"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 12h1M7 8v8M11 5v14M15 8v8M19 10v4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.4 11h11l2-8H6.2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8M4 3v5h5M4 13a8 8 0 0 0 14.3 4.9L20 16M20 21v-5h-5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></symbol>
+    <symbol id="i-wordmark" viewBox="0 0 166 20">
+      <circle cx="10" cy="10" r="9.1"/>
+      <path d="M36 19.2V.8h7.2a4.9 4.9 0 0 1 0 9.8H36M41.6 10.6l7.4 8.6"/>
+      <path d="M76.6 4.2a9.1 9.1 0 1 0 0 11.6"/>
+      <path d="M90 19.2L98 .8l8 18.4"/>
+      <path d="M128 19.2L136 .8l8 18.4"/>
+      <path d="M160 .8v18.4"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" aria-label="Site">
+  <div class="nav-pill">
+    <a class="nav-logo" href="#top" aria-label="Orca AI home">
+      <span class="mark" aria-hidden="true"></span>
+      <svg class="wordmark" aria-hidden="true"><use href="#i-wordmark"/></svg>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <div class="nav-item">
+        <button class="nav-top" type="button" aria-expanded="false" aria-controls="nav-panel">Solutions<svg class="ico ico-s"><use href="#i-chev"/></svg></button>
+        <div class="nav-panel" id="nav-panel">
+          <a class="nav-prod" href="#solutions" data-way="0"><span class="nav-prod-icon"><svg class="ico"><use href="#i-zap"/></svg></span><span class="nav-prod-name">Automation solutions<small>Repetitive work, handled</small></span></a>
+          <a class="nav-prod" href="#solutions" data-way="1"><span class="nav-prod-icon"><svg class="ico"><use href="#i-plug"/></svg></span><span class="nav-prod-name">AI integrations<small>AI inside the tools you run</small></span></a>
+          <a class="nav-prod" href="#solutions" data-way="2"><span class="nav-prod-icon"><svg class="ico"><use href="#i-flow"/></svg></span><span class="nav-prod-name">AI workflows<small>Multi-step processes, end to end</small></span></a>
+          <a class="nav-prod" href="#solutions" data-way="3"><span class="nav-prod-icon"><svg class="ico"><use href="#i-bot"/></svg></span><span class="nav-prod-name">AI agents and chatbots<small>Embedded across your ecosystem</small></span></a>
+        </div>
+      </div>
+      <a class="nav-top" href="#platform">How we work</a>
+      <a class="nav-top" href="#compare">Why Orca</a>
+      <a class="nav-top" href="#questions">FAQ</a>
+      <a class="nav-top" href="#contact">Contact</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+        <svg class="ico t-moon"><use href="#i-moon"/></svg><svg class="ico t-sun"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+    <a class="pill pill-ink nav-cta" href="#contact">Book a call</a>
+    <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu"><span></span><span></span></button>
+  </div>
+  <div class="nav-sheet" id="nav-sheet" hidden>
+    <details class="ns-group">
+      <summary>Solutions<svg class="ico ico-s"><use href="#i-chev"/></svg></summary>
+      <div class="ns-items">
+        <a href="#solutions" data-way="0">Automation solutions</a>
+        <a href="#solutions" data-way="1">AI integrations</a>
+        <a href="#solutions" data-way="2">AI workflows</a>
+        <a href="#solutions" data-way="3">AI agents and chatbots</a>
+      </div>
+    </details>
+    <a href="#platform">How we work</a>
+    <a href="#compare">Why Orca</a>
+    <a href="#questions">FAQ</a>
+    <a href="#contact">Contact</a>
+    <div class="ns-foot">
+      <a class="pill pill-ink" href="#contact">Book a call</a>
+      <button class="theme-toggle" type="button" aria-label="Switch colour theme"><svg class="ico t-moon"><use href="#i-moon"/></svg><svg class="ico t-sun"><use href="#i-sun"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <span id="top"></span>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-wash" aria-hidden="true">
+      <svg class="hero-rings" viewBox="-500 -500 1000 1000"><circle class="ring r1" r="300"/><circle class="ring r2" r="400"/><circle class="ring r3" r="490"/></svg>
+    </div>
+    <div class="hero-copy">
+      <h1 id="hero-title" class="hero-title e" style="--d:0">Put the busywork on AI <span class="accent">autopilot.</span></h1>
+      <p class="hero-sub e" style="--d:1">Orca AI builds automations, integrations, workflows and AI agents that live inside the tools your team already uses.</p>
+      <form class="prompt e" style="--d:2" action="#contact" data-studio-open aria-label="Tell Orca AI what you want to automate">
+        <span class="prompt-mark" aria-hidden="true"><span class="mark"></span></span>
+        <label class="sr-only" for="prompt-input">What do you want to automate?</label>
+        <input id="prompt-input" class="prompt-input" name="brief" type="text" placeholder="Answer WhatsApp leads in Arabic and English" autocomplete="off">
+        <button class="pill pill-signal prompt-cta" type="submit"><span class="cta-label">Plan my build</span><svg class="ico cta-arrow"><use href="#i-arrow"/></svg></button>
+      </form>
+      <div class="partners e" style="--d:3">
+        <p>Builds on</p>
+        <ul>
+          <li>OpenAI</li><li>Claude</li><li>Gemini</li><li>WhatsApp</li><li>n8n</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- REEL: 3D carousel of live agent cards -->
+    <div class="reel e" style="--d:4" aria-label="Examples of what Orca AI agents do">
+      <div class="reel-track" tabindex="0" aria-roledescription="carousel">
+        <figure class="reel-card rc-chat">
+          <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-chat"/></svg>WhatsApp</span><span class="rc-live">Live</span></div>
+          <div class="rc-body">
+            <p class="bub in" style="--i:0">Hi, do you ship to Alexandria?</p>
+            <p class="bub out" style="--i:1">Yes, in two to three days. Shall I reserve the blue one in size 42?</p>
+            <p class="bub in" style="--i:2">Yes please</p>
+            <p class="bub out" style="--i:3">Reserved. Your payment link is on its way.</p>
+          </div>
+          <figcaption class="rc-cap"><b>Sales agent</b><span>Answers, qualifies, closes</span></figcaption>
+        </figure>
+        <figure class="reel-card rc-doc">
+          <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-file"/></svg>Email</span><span class="rc-live">Live</span></div>
+          <div class="rc-body">
+            <div class="doc"><i></i><i></i><i class="hl"></i><i></i><i class="hl"></i><i></i></div>
+            <ul class="fields">
+              <li style="--i:0"><span>Vendor</span><b>Nile Supplies</b></li>
+              <li style="--i:1"><span>Total</span><b>EGP 18,400</b></li>
+              <li style="--i:2"><span>Due</span><b>30 Nov</b></li>
+              <li style="--i:3"><span>Status</span><b class="ok">Filed in ERP</b></li>
+            </ul>
+          </div>
+          <figcaption class="rc-cap"><b>Invoice reader</b><span>From inbox to ledger</span></figcaption>
+        </figure>
+        <figure class="reel-card rc-web">
+          <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-globe"/></svg>Website</span><span class="rc-live">Live</span></div>
+          <div class="rc-body">
+            <p class="bub in" style="--i:0">What's included in the premium plan?</p>
+            <p class="bub out" style="--i:1">Priority support, three seats and monthly reports. Want a quick comparison?</p>
+            <div class="chips" style="--i:2"><span>Compare plans</span><span>Talk to sales</span></div>
+          </div>
+          <figcaption class="rc-cap"><b>Website chatbot</b><span>Trained on your own docs</span></figcaption>
+        </figure>
+        <figure class="reel-card rc-crm">
+          <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-users"/></svg>CRM</span><span class="rc-live">Live</span></div>
+          <div class="rc-body">
+            <div class="contact"><span class="avatar">MK</span><b>Mariam K.</b></div>
+            <ul class="fields">
+              <li style="--i:0"><span>Company</span><b>Delta Foods</b></li>
+              <li style="--i:1"><span>Source</span><b>Website chat</b></li>
+              <li style="--i:2"><span>Need</span><b>Order tracking bot</b></li>
+              <li style="--i:3"><span>Stage</span><b class="ok">Qualified</b></li>
+            </ul>
+          </div>
+          <figcaption class="rc-cap"><b>CRM sync</b><span>Every lead logged, no typing</span></figcaption>
+        </figure>
+        <figure class="reel-card rc-cal">
+          <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-cal"/></svg>Calendar</span><span class="rc-live">Live</span></div>
+          <div class="rc-body">
+            <div class="cal"><i></i><i class="busy"></i><i></i><i></i><i class="busy"></i><i></i><i class="book"></i><i></i><i class="busy"></i><i></i><i></i><i></i></div>
+            <p class="booked">Thursday 11:00<br><b>Demo with Mariam</b></p>
+          </div>
+          <figcaption class="rc-cap"><b>Meeting booker</b><span>Finds the slot, sends the invite</span></figcaption>
+        </figure>
+        <figure class="reel-card rc-tri">
+          <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-tag"/></svg>Helpdesk</span><span class="rc-live">Live</span></div>
+          <div class="rc-body">
+            <ul class="tickets">
+              <li style="--i:0"><span>Refund not received</span><b class="t-a">Billing</b></li>
+              <li style="--i:1"><span>App crashes on login</span><b class="t-b">Bug</b></li>
+              <li style="--i:2"><span>Change delivery address</span><b class="t-c">Orders</b></li>
+              <li style="--i:3"><span>Card charged twice</span><b class="t-a">Billing</b></li>
+            </ul>
+          </div>
+          <figcaption class="rc-cap"><b>Support triage</b><span>Tagged, routed, drafted</span></figcaption>
+        </figure>
+        <figure class="reel-card rc-voice">
+          <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-phone"/></svg>Calls</span><span class="rc-live">Live</span></div>
+          <div class="rc-body">
+            <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <ul class="sum">
+              <li style="--i:0">Wants 40 units by Monday</li>
+              <li style="--i:1">Asked for net-30 terms</li>
+              <li style="--i:2">Follow-up task created</li>
+            </ul>
+          </div>
+          <figcaption class="rc-cap"><b>Call summariser</b><span>Notes and next steps, instantly</span></figcaption>
+        </figure>
+        <figure class="reel-card rc-rep">
+          <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-chat"/></svg>Slack</span><span class="rc-live">Live</span></div>
+          <div class="rc-body">
+            <p class="rep-h">Monday ops report</p>
+            <ul class="sum">
+              <li style="--i:0">Orders shipped on time, up on last week</li>
+              <li style="--i:1">Two suppliers late, emails drafted</li>
+              <li style="--i:2">Stock alert on three items</li>
+            </ul>
+          </div>
+          <figcaption class="rc-cap"><b>Report bot</b><span>The week, written for you</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED / STACK -->
+  <section class="trusted" aria-labelledby="trusted-title">
+    <h2 id="trusted-title" class="sr-only">The stack Orca AI works with</h2>
+    <div class="trusted-row">
+      <p class="trusted-with">Works with your stack</p>
+      <div class="marquee">
+        <div class="marquee-track">
+          <ul class="marquee-set">
+            <li>OpenAI</li><li>Anthropic Claude</li><li>Google Gemini</li><li>WhatsApp Business</li><li>Meta</li><li>Slack</li><li>HubSpot</li><li>Salesforce</li><li>Zoho</li><li>Odoo</li><li>Shopify</li><li>Google Workspace</li><li>Microsoft 365</li><li>Notion</li><li>n8n</li><li>Make</li><li>Zapier</li>
+          </ul>
+          <ul class="marquee-set" aria-hidden="true">
+            <li>OpenAI</li><li>Anthropic Claude</li><li>Google Gemini</li><li>WhatsApp Business</li><li>Meta</li><li>Slack</li><li>HubSpot</li><li>Salesforce</li><li>Zoho</li><li>Odoo</li><li>Shopify</li><li>Google Workspace</li><li>Microsoft 365</li><li>Notion</li><li>n8n</li><li>Make</li><li>Zapier</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <ul class="proof-strip">
+      <li><b>24/7</b><span>agents on every channel</span></li>
+      <li><b>4</b><span>ways to put AI to work</span></li>
+      <li><b>5</b><span>steps from brief to live</span></li>
+      <li><b>1</b><span>team, scoping to support</span></li>
+    </ul>
+  </section>
+
+  <div class="sheet">
+    <!-- WAYS -->
+    <section class="section ways" id="solutions" aria-labelledby="ways-title">
+      <h2 id="ways-title" class="h2 rv">Pick the outcome. We build the <span class="accent">system.</span></h2>
+      <p class="h2-sub rv">Four ways to put AI to work. Orca scopes it, builds it into your stack and keeps it running.</p>
+      <div class="pv pv-ways rv" data-pv data-ms="6500">
+        <ol class="pv-steps" role="tablist" aria-label="Solutions">
+          <li><button class="pv-step" type="button" role="tab" id="way-0" aria-controls="ways-panel" aria-selected="true">
+            <span class="pv-num pv-icon" aria-hidden="true"><svg class="ico"><use href="#i-zap"/></svg></span><span class="pv-name">Automation solutions</span>
+            <span class="pv-desc"><span><b>The repetitive work leaves your team's desk.</b> Data entry, follow-ups, reports and approvals run on rules and AI. Best for operations drowning in routine.</span></span><span class="pv-bar"><i></i></span></button></li>
+          <li><button class="pv-step" type="button" role="tab" id="way-1" aria-controls="ways-panel" aria-selected="false" tabindex="-1">
+            <span class="pv-num pv-icon" aria-hidden="true"><svg class="ico"><use href="#i-plug"/></svg></span><span class="pv-name">AI integrations</span>
+            <span class="pv-desc"><span><b>AI plugged into the systems you already pay for.</b> CRM, ERP, inbox, sheets and chat share one brain. Best for teams that hate switching tabs.</span></span><span class="pv-bar"><i></i></span></button></li>
+          <li><button class="pv-step" type="button" role="tab" id="way-2" aria-controls="ways-panel" aria-selected="false" tabindex="-1">
+            <span class="pv-num pv-icon" aria-hidden="true"><svg class="ico"><use href="#i-flow"/></svg></span><span class="pv-name">AI workflows</span>
+            <span class="pv-desc"><span><b>Multi-step processes that run themselves.</b> Trigger, classify, enrich, approve and act, with a person in the loop where it matters. Best for processes with many hand-offs.</span></span><span class="pv-bar"><i></i></span></button></li>
+          <li><button class="pv-step" type="button" role="tab" id="way-3" aria-controls="ways-panel" aria-selected="false" tabindex="-1">
+            <span class="pv-num pv-icon" aria-hidden="true"><svg class="ico"><use href="#i-bot"/></svg></span><span class="pv-name">AI agents and chatbots</span>
+            <span class="pv-desc"><span><b>Agents that talk to customers and act for them.</b> Embedded in WhatsApp, your website, apps and internal tools. Best for sales and support around the clock.</span></span><span class="pv-bar"><i></i></span></button></li>
+        </ol>
+        <div class="pv-stage" role="tabpanel" id="ways-panel" aria-labelledby="way-0">
+          <div class="pv-frame">
+            <!-- 0 automation -->
+            <div class="scene sc-auto is-front">
+              <div class="ui-card">
+                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-zap"/></svg>Ops autopilot</span><span class="ui-pill">Running</span></div>
+                <ul class="tasks">
+                  <li style="--i:0"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Invoice from Nile Supplies read and filed</li>
+                  <li style="--i:1"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>New lead routed to the sales channel</li>
+                  <li style="--i:2"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Refund under policy approved</li>
+                  <li style="--i:3"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Supplier reminder emailed</li>
+                  <li style="--i:4"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Weekly report posted to Slack</li>
+                </ul>
+              </div>
+            </div>
+            <!-- 1 integrations hub -->
+            <div class="scene sc-hub">
+              <svg class="hub" viewBox="0 0 400 400" aria-hidden="true">
+                <g class="spokes">
+                  <path d="M200 200L200 60"/><path d="M200 200L321 130"/><path d="M200 200L321 270"/><path d="M200 200L200 340"/><path d="M200 200L79 270"/><path d="M200 200L79 130"/>
+                </g>
+                <g class="pulses">
+                  <path style="--k:0" d="M200 200L200 60"/><path style="--k:1" d="M200 200L321 130"/><path style="--k:2" d="M200 200L321 270"/><path style="--k:3" d="M200 200L200 340"/><path style="--k:4" d="M200 200L79 270"/><path style="--k:5" d="M200 200L79 130"/>
+                </g>
+              </svg>
+              <span class="hub-core"><span class="mark"></span></span>
+              <span class="node" style="--x:50%;--y:15%">CRM</span>
+              <span class="node" style="--x:80.25%;--y:32.5%">ERP</span>
+              <span class="node" style="--x:80.25%;--y:67.5%">Inbox</span>
+              <span class="node" style="--x:50%;--y:85%">Sheets</span>
+              <span class="node" style="--x:19.75%;--y:67.5%">WhatsApp</span>
+              <span class="node" style="--x:19.75%;--y:32.5%">Slack</span>
+            </div>
+            <!-- 2 workflow -->
+            <div class="scene sc-flow">
+              <ol class="flow">
+                <li style="--i:0"><svg class="ico"><use href="#i-mail"/></svg><b>Trigger</b><span>Order email arrives</span></li>
+                <li style="--i:1"><svg class="ico"><use href="#i-tag"/></svg><b>Classify</b><span>Bulk order, priority</span></li>
+                <li style="--i:2"><svg class="ico"><use href="#i-db"/></svg><b>Enrich</b><span>Stock and pricing pulled</span></li>
+                <li style="--i:3"><svg class="ico"><use href="#i-approve"/></svg><b>Approve</b><span>Manager taps approve</span></li>
+                <li style="--i:4"><svg class="ico"><use href="#i-send"/></svg><b>Act</b><span>Quote sent, CRM updated</span></li>
+              </ol>
+            </div>
+            <!-- 3 agent chat -->
+            <div class="scene sc-agent">
+              <div class="ui-card chat">
+                <div class="ui-head"><span class="ui-title"><span class="mark"></span>Orca agent</span><span class="ui-pill">Online</span></div>
+                <p class="bub in" style="--i:0" lang="ar" dir="rtl">عايز أعرف حالة الطلب رقم ٤٤٧١</p>
+                <p class="bub out" style="--i:1">Order 4471 left the warehouse this morning and arrives Thursday. Want delivery updates on WhatsApp?</p>
+                <p class="bub in" style="--i:2">Yes, and can I change the address?</p>
+                <p class="bub out" style="--i:3">Sure. I've passed you to Ahmed in logistics, he has your order open now.</p>
+                <p class="handoff" style="--i:4"><svg class="ico"><use href="#i-users"/></svg>Handed to a human with full context</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="pv-more" href="#contact">Talk to us about <span class="pv-more-name">automation solutions</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <!-- CHAPTER -->
+    <section class="section chapter" id="platform" aria-labelledby="chapter-title">
+      <p class="chapter-line rv">Software used to wait for people. Now it works beside them.</p>
+      <h2 id="chapter-title" class="h2 rv">AI that scales with <span class="accent">you.</span></h2>
+      <p class="h2-sub rv">Tell us the job. Orca maps the process, designs the agent, builds it, launches it with your approval and tunes it every week. You decide how hands-on to be.</p>
+      <div class="pv rv" data-pv data-ms="6000">
+        <ol class="pv-steps" role="tablist" aria-label="How a project runs with Orca AI">
+          <li><button class="pv-step" type="button" role="tab" id="st-0" aria-controls="steps-panel" aria-selected="true"><span class="pv-num" aria-hidden="true">1</span><span class="pv-name">Discover</span><span class="pv-desc"><span><b>We map where the hours go.</b> One call and a walk through your tools to find the work AI should own first.</span></span><span class="pv-bar"><i></i></span></button></li>
+          <li><button class="pv-step" type="button" role="tab" id="st-1" aria-controls="steps-panel" aria-selected="false" tabindex="-1"><span class="pv-num" aria-hidden="true">2</span><span class="pv-name">Design</span><span class="pv-desc"><span><b>You get a blueprint, not a pitch deck.</b> Goal, systems, guardrails and the measure of success, agreed before we build.</span></span><span class="pv-bar"><i></i></span></button></li>
+          <li><button class="pv-step" type="button" role="tab" id="st-2" aria-controls="steps-panel" aria-selected="false" tabindex="-1"><span class="pv-num" aria-hidden="true">3</span><span class="pv-name">Build</span><span class="pv-desc"><span><b>Orca engineers build it into your stack.</b> Your accounts, your data, your brand voice. Tested on your real cases.</span></span><span class="pv-bar"><i></i></span></button></li>
+          <li><button class="pv-step" type="button" role="tab" id="st-3" aria-controls="steps-panel" aria-selected="false" tabindex="-1"><span class="pv-num" aria-hidden="true">4</span><span class="pv-name">Launch</span><span class="pv-desc"><span><b>You approve, then it goes live.</b> Start with a pilot and human review, widen it when you trust it.</span></span><span class="pv-bar"><i></i></span></button></li>
+          <li><button class="pv-step" type="button" role="tab" id="st-4" aria-controls="steps-panel" aria-selected="false" tabindex="-1"><span class="pv-num" aria-hidden="true">5</span><span class="pv-name">Improve</span><span class="pv-desc"><span><b>It gets sharper every week.</b> We review the hard cases, tune prompts and add new skills as you grow.</span></span><span class="pv-bar"><i></i></span></button></li>
+        </ol>
+        <div class="pv-stage" role="tabpanel" id="steps-panel" aria-labelledby="st-0">
+          <div class="pv-frame">
+            <div class="scene sc-disc is-front">
+              <div class="ui-card">
+                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-search"/></svg>Process map</span><span class="ui-pill">Discovery</span></div>
+                <ul class="procs">
+                  <li style="--i:0"><span>Answering order questions</span><b class="hot">Automate first</b></li>
+                  <li style="--i:1"><span>Copying invoices into the ERP</span><b class="hot">Automate first</b></li>
+                  <li style="--i:2"><span>Weekly sales report</span><b class="warm">Next</b></li>
+                  <li style="--i:3"><span>Supplier negotiations</span><b class="cool">Keep human</b></li>
+                  <li style="--i:4"><span>Lead follow-ups</span><b class="hot">Automate first</b></li>
+                </ul>
+              </div>
+            </div>
+            <div class="scene sc-design">
+              <div class="ui-card">
+                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-file"/></svg>Blueprint</span><span class="ui-pill">Draft</span></div>
+                <dl class="bp">
+                  <div style="--i:0"><dt>Goal</dt><dd>Answer every order question in under a minute</dd></div>
+                  <div style="--i:1"><dt>Systems</dt><dd>WhatsApp, Shopify, Zoho CRM</dd></div>
+                  <div style="--i:2"><dt>Guardrails</dt><dd>Refunds and complaints go to a person</dd></div>
+                  <div style="--i:3"><dt>Success</dt><dd>Fewer tickets reaching the team</dd></div>
+                </dl>
+              </div>
+            </div>
+            <div class="scene sc-build">
+              <div class="ui-card term">
+                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-code"/></svg>Build log</span><span class="ui-pill">Building</span></div>
+                <ul class="log">
+                  <li style="--i:0"><b>connect</b> shopify.orders</li>
+                  <li style="--i:1"><b>connect</b> whatsapp.business</li>
+                  <li style="--i:2"><b>load</b> 214 past conversations as tests</li>
+                  <li style="--i:3"><b>tone</b> brand voice, Arabic and English</li>
+                  <li style="--i:4"><b>guard</b> refunds route to a person</li>
+                  <li style="--i:5"><b class="ok">pass</b> test suite</li>
+                </ul>
+              </div>
+            </div>
+            <div class="scene sc-launch">
+              <div class="ui-card">
+                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-approve"/></svg>Go-live checklist</span><span class="ui-pill">Pilot</span></div>
+                <ul class="toggles">
+                  <li style="--i:0"><span>Human review on replies</span><i class="sw on"></i></li>
+                  <li style="--i:1"><span>Pilot on 10% of chats</span><i class="sw on"></i></li>
+                  <li style="--i:2"><span>Escalation to the team</span><i class="sw on"></i></li>
+                  <li style="--i:3"><span>Live for all customers</span><i class="sw late"></i></li>
+                </ul>
+                <p class="golive" style="--i:4"><svg class="ico"><use href="#i-check"/></svg>Approved by you. Agent is live.</p>
+              </div>
+            </div>
+            <div class="scene sc-improve">
+              <div class="ui-card">
+                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-refresh"/></svg>This week's tuning</span><span class="ui-pill">Week 6</span></div>
+                <ul class="tasks">
+                  <li style="--i:0"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Reviewed the hardest conversations</li>
+                  <li style="--i:1"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Added answers for the new return policy</li>
+                  <li style="--i:2"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Taught the agent to book installations</li>
+                  <li style="--i:3"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Connected the warehouse sheet</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="pv-more" href="#contact">Start with <span class="pv-more-name">Discover</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <!-- GETS -->
+    <section class="section gets" aria-labelledby="gets-title">
+      <h2 id="gets-title" class="h2 rv">The groundwork companies need to scale <span class="accent">AI.</span></h2>
+      <p class="h2-sub rv">Everything between a clever demo and a system your team trusts, in one partner.</p>
+      <ul class="gets-list">
+        <li class="rv"><span class="gets-icon"><svg class="ico"><use href="#i-layers"/></svg></span><h3>Embedded in your ecosystem</h3><p>Agents live where work already happens: WhatsApp, your website, CRM, ERP, inbox and internal tools.</p></li>
+        <li class="rv"><span class="gets-icon"><svg class="ico"><use href="#i-approve"/></svg></span><h3>A human in the loop</h3><p>Set which actions need your approval. Sensitive cases hand over to your team with the full context.</p></li>
+        <li class="rv"><span class="gets-icon"><svg class="ico"><use href="#i-lock"/></svg></span><h3>Your data stays yours</h3><p>Built on your accounts and your keys, with access limited to what each agent needs.</p></li>
+        <li class="rv"><span class="gets-icon"><svg class="ico"><use href="#i-globe"/></svg></span><h3>Speaks your customers' language</h3><p>Arabic, English and the mix your customers actually write in, in your brand's tone of voice.</p></li>
+        <li class="rv"><span class="gets-icon"><svg class="ico"><use href="#i-gauge"/></svg></span><h3>Measured from day one</h3><p>Every project starts with a success measure, and you see how the agent performs against it.</p></li>
+        <li class="rv"><span class="gets-icon"><svg class="ico"><use href="#i-buoy"/></svg></span><h3>Support after launch</h3><p>Orca monitors, fixes and improves what we build. You never inherit a black box.</p></li>
+      </ul>
+    </section>
+
+    <!-- MATCH: tasks grid -->
+    <section class="match" aria-labelledby="match-title">
+      <h2 id="match-title" class="h2 rv">Your agents never clock <span class="accent">out.</span></h2>
+      <p class="h2-sub match-facts rv"><span><b>24/7</b> on every channel you connect, nights and holidays included.</span> <span><b>One brain</b> shared by your website, WhatsApp, inbox and back office.</span></p>
+      <div class="match-stage" data-cycle>
+        <ul class="match-grid" aria-hidden="true">
+          <li class="mf"><svg class="ico"><use href="#i-chat"/></svg><span>Lead answered</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-file"/></svg><span>Invoice filed</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-cal"/></svg><span>Meeting booked</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-tag"/></svg><span>Ticket tagged</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-mail"/></svg><span>Follow-up sent</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-db"/></svg><span>CRM updated</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-cart"/></svg><span>Order tracked</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-phone"/></svg><span>Call summarised</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-search"/></svg><span>Lead researched</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-refresh"/></svg><span>Stock synced</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-send"/></svg><span>Quote sent</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-approve"/></svg><span>Refund approved</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-wave"/></svg><span>Voice note read</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-users"/></svg><span>Handed to a human</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-file"/></svg><span>Contract checked</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-chat"/></svg><span>Review replied</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-gauge"/></svg><span>Report written</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+          <li class="mf"><svg class="ico"><use href="#i-mail"/></svg><span>Inbox sorted</span><i class="mf-badge"><svg class="ico"><use href="#i-check"/></svg></i></li>
+        </ul>
+        <div class="match-core" aria-hidden="true"><span class="mark"></span></div>
+      </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section class="section compare" id="compare" aria-labelledby="compare-title">
+      <h2 id="compare-title" class="h2 rv">Your team approves. Orca does the <span class="accent">rest.</span></h2>
+      <p class="h2-sub rv">Orca designs the system, builds it into your tools and keeps it sharp. You approve each step, and a real team is on every project.</p>
+      <div class="cmp rv">
+        <ul class="cmp-labels" aria-hidden="true">
+          <li class="cmp-corner"></li>
+          <li>How you pay</li><li>Fit to your tools</li><li>Who builds it</li><li>Time to first result</li><li>Control over the AI</li><li>Your data</li><li>After launch</li>
+        </ul>
+        <article class="cmp-card">
+          <header><span class="cmp-icon"><svg class="ico"><use href="#i-bot"/></svg></span><h3>Off-the-shelf chatbot</h3></header>
+          <ul>
+            <li data-q="How you pay"><svg class="ico x"><use href="#i-close"/></svg><span>Monthly seats, used or not</span></li>
+            <li data-q="Fit to your tools"><svg class="ico x"><use href="#i-close"/></svg><span>Their templates, your workarounds</span></li>
+            <li data-q="Who builds it"><svg class="ico x"><use href="#i-close"/></svg><span>You, from a template</span></li>
+            <li data-q="Time to first result"><svg class="ico x"><use href="#i-close"/></svg><span>Quick to start, slow to fit</span></li>
+            <li data-q="Control over the AI"><svg class="ico x"><use href="#i-close"/></svg><span>Limited to their settings</span></li>
+            <li data-q="Your data"><svg class="ico x"><use href="#i-close"/></svg><span>Sits on their platform</span></li>
+            <li data-q="After launch"><svg class="ico x"><use href="#i-close"/></svg><span>A help-centre article</span></li>
+          </ul>
+        </article>
+        <article class="cmp-card">
+          <header><span class="cmp-icon"><svg class="ico"><use href="#i-users"/></svg></span><h3>Building in-house</h3></header>
+          <ul>
+            <li data-q="How you pay"><svg class="ico x"><use href="#i-close"/></svg><span>Salaries before the first result</span></li>
+            <li data-q="Fit to your tools"><svg class="ico x"><use href="#i-close"/></svg><span>Whatever your team can wire up</span></li>
+            <li data-q="Who builds it"><svg class="ico x"><use href="#i-close"/></svg><span>New hires, once you find them</span></li>
+            <li data-q="Time to first result"><svg class="ico x"><use href="#i-close"/></svg><span>Months of hiring and setup</span></li>
+            <li data-q="Control over the AI"><svg class="ico x"><use href="#i-close"/></svg><span>Full, if you maintain it</span></li>
+            <li data-q="Your data"><svg class="ico x"><use href="#i-close"/></svg><span>Yours to secure alone</span></li>
+            <li data-q="After launch"><svg class="ico x"><use href="#i-close"/></svg><span>Your team, on top of their jobs</span></li>
+          </ul>
+        </article>
+        <article class="cmp-card cmp-us">
+          <header><h3 class="cmp-logo"><span class="mark" aria-hidden="true"></span><svg class="wordmark" aria-hidden="true"><use href="#i-wordmark"/></svg><span class="sr-only">Orca AI</span></h3></header>
+          <ul>
+            <li data-q="How you pay"><svg class="ico"><use href="#i-check"/></svg><span>A scoped project, priced up front</span></li>
+            <li data-q="Fit to your tools"><svg class="ico"><use href="#i-check"/></svg><span>Built into the tools you already run</span></li>
+            <li data-q="Who builds it"><svg class="ico"><use href="#i-check"/></svg><span>Orca engineers, with your team</span></li>
+            <li data-q="Time to first result"><svg class="ico"><use href="#i-check"/></svg><span>A working pilot before full rollout</span></li>
+            <li data-q="Control over the AI"><svg class="ico"><use href="#i-check"/></svg><span>Approvals and guardrails you set</span></li>
+            <li data-q="Your data"><svg class="ico"><use href="#i-check"/></svg><span>Stays in your accounts and keys</span></li>
+            <li data-q="After launch"><svg class="ico"><use href="#i-check"/></svg><span>Orca monitors, tunes and supports</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- PLAYBOOK (news module) -->
+    <section class="section news" id="playbook" aria-labelledby="news-title">
+      <h2 id="news-title" class="h2 rv">From the Orca <span class="accent">playbook.</span></h2>
+      <p class="h2-sub rv">How we put agents to work, written for the people who run the business. Ask and we'll walk you through any of them.</p>
+      <a class="news-lead rv" href="#contact" data-brief="Walk me through the WhatsApp sales agent playbook">
+        <div class="news-lead-copy">
+          <span class="news-pill"><svg class="ico"><use href="#i-chat"/></svg>AI agents and chatbots</span>
+          <h3>One WhatsApp thread that answers, qualifies and books the meeting</h3>
+          <p>How a sales agent handles the first conversation, writes the lead into your CRM and hands warm buyers to your team.</p>
+        </div>
+        <div class="news-lead-art" aria-hidden="true">
+          <div class="ui-card chat">
+            <p class="bub in">Do you have a plan for 20 staff?</p>
+            <p class="bub out">We do. Can I ask what tools your team uses today?</p>
+            <p class="bub in">Zoho and Google Sheets</p>
+            <p class="bub out">Perfect fit. Thursday 11:00 works for a demo?</p>
+          </div>
+        </div>
+      </a>
+      <ul class="news-list">
+        <li class="rv"><a href="#contact" data-brief="Which of my workflows should I hand to AI first?"><span class="news-art"><svg class="ico"><use href="#i-flow"/></svg></span><span class="news-date">Workflows</span><b>Five workflows every operations team can hand to AI this quarter</b></a></li>
+        <li class="rv"><a href="#contact" data-brief="Connect an AI assistant to our CRM safely"><span class="news-art"><svg class="ico"><use href="#i-lock"/></svg></span><span class="news-date">Integrations</span><b>Connecting an AI model to your CRM without leaking customer data</b></a></li>
+        <li class="rv"><a href="#contact" data-brief="Design the human handoff for our support chatbot"><span class="news-art"><svg class="ico"><use href="#i-users"/></svg></span><span class="news-date">Agents</span><b>When an agent should stop and hand the customer to a person</b></a></li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="questions" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="h2 rv">FAQ</h2>
+      <div class="faq-list rv">
+        <details name="faq"><summary>What does Orca AI build?<svg class="ico"><use href="#i-chev"/></svg></summary><p>Four things: automation solutions that take routine work off your team, AI integrations that connect models to the systems you already use, multi-step AI workflows, and AI agents and chatbots embedded across your website, WhatsApp, apps and internal tools.</p></details>
+        <details name="faq"><summary>Do we have to change the tools we use?<svg class="ico"><use href="#i-chev"/></svg></summary><p>No. We build around your existing stack, whether that is a CRM, an ERP, Google Workspace, Microsoft 365, Shopify or a custom system with an API. The goal is less switching between tools, not one more.</p></details>
+        <details name="faq"><summary>Which AI models do you use?<svg class="ico"><use href="#i-chev"/></svg></summary><p>We pick the model per job, from providers such as OpenAI, Anthropic and Google, and open models where privacy or cost calls for them. You are never locked into one provider.</p></details>
+        <details name="faq"><summary>How do you keep our data safe?<svg class="ico"><use href="#i-chev"/></svg></summary><p>Agents run on your accounts and API keys, each with access only to what its job needs. Sensitive actions require approval, and we agree data handling in writing before any build begins.</p></details>
+        <details name="faq"><summary>Which languages can the agents handle?<svg class="ico"><use href="#i-chev"/></svg></summary><p>Arabic, including Egyptian and Gulf dialects, English, and mixed Arabic-English messages, plus other languages on request. We tune the tone to match your brand.</p></details>
+        <details name="faq"><summary>How long does a project take?<svg class="ico"><use href="#i-chev"/></svg></summary><p>It depends on the scope. We agree the timeline in the blueprint before building, and most projects start with a small pilot so you see results before a full rollout.</p></details>
+        <details name="faq"><summary>How does Orca AI charge?<svg class="ico"><use href="#i-chev"/></svg></summary><p>Each build is a scoped project with a price agreed up front. Ongoing monitoring and improvement is a monthly plan sized to how much the agents do. Model and platform usage is billed at cost to your own accounts.</p></details>
+        <details name="faq"><summary>What happens when the AI is not sure?<svg class="ico"><use href="#i-chev"/></svg></summary><p>It stops and hands over. You decide the rules: which topics, amounts or customers always go to a person, and the agent passes the full conversation so nobody has to ask twice.</p></details>
+        <details name="faq"><summary>Do you support what you build after launch?<svg class="ico"><use href="#i-chev"/></svg></summary><p>Yes. We monitor the agents, review difficult cases, fix issues and add new skills as your business changes. You also get documentation, so your team understands what runs where.</p></details>
+        <details name="faq"><summary>How do we get started?<svg class="ico"><use href="#i-chev"/></svg></summary><p>Tell us what you want to automate in the form below, email orcaaiofficial1@gmail.com or message us on WhatsApp at +20 100 274 3113. We reply with first ideas and a time to talk.</p></details>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing" id="contact" aria-labelledby="demo-title">
+      <h2 id="demo-title" class="h2 rv">Start building your AI growth <span class="accent">engine.</span></h2>
+      <p class="h2-sub rv">Tell us what you want to automate. The Orca team replies with first ideas and a time to talk.</p>
+      <form class="prompt prompt-flow rv" data-demo>
+        <span class="prompt-mark" aria-hidden="true"><span class="mark"></span></span>
+        <label class="sr-only" for="demo-brief">What do you want to automate?</label>
+        <input id="demo-brief" class="prompt-input" name="brief" type="text" placeholder="What do you want to automate?" autocomplete="off" required>
+        <button class="pill pill-signal prompt-cta" type="submit"><span class="cta-label">Continue</span><svg class="ico cta-arrow"><use href="#i-arrow"/></svg></button>
+      </form>
+      <form class="demo-step" data-demo-step hidden>
+        <p class="demo-step-lead">Name, email and company, and your brief goes straight to the Orca team.</p>
+        <div class="demo-fields">
+          <label><span>Name</span><input name="name" type="text" autocomplete="name" required></label>
+          <label><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>
+          <label><span>Company</span><input name="company" type="text" autocomplete="organization"></label>
+        </div>
+        <div class="demo-actions">
+          <button class="pill pill-ink" type="submit" value="email"><svg class="ico"><use href="#i-mail"/></svg>Send by email</button>
+          <button class="pill pill-soft" type="submit" value="whatsapp"><svg class="ico"><use href="#i-chat"/></svg>Send on WhatsApp</button>
+        </div>
+        <p class="demo-done" role="status" hidden>Your email app has opened with the brief. Press send and the Orca team will take it from there.</p>
+      </form>
+      <ul class="contact-lines rv">
+        <li><a href="mailto:orcaaiofficial1@gmail.com"><svg class="ico"><use href="#i-mail"/></svg>orcaaiofficial1@gmail.com</a></li>
+        <li><a href="tel:+201002743113"><svg class="ico"><use href="#i-phone"/></svg>+20 100 274 3113</a></li>
+        <li><a href="https://wa.me/201002743113" target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat"/></svg>WhatsApp us</a></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<aside class="door" aria-label="WhatsApp">
+  <p><b>Rather talk it through?</b> Message the Orca team on WhatsApp and describe the work you want off your plate.</p>
+  <a class="door-link" href="https://wa.me/201002743113" target="_blank" rel="noopener">Open WhatsApp<svg class="ico"><use href="#i-arrow"/></svg></a>
+</aside>
+
+<footer class="footer">
+  <div class="footer-card">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="footer-logo" href="#top" aria-label="Orca AI home"><span class="mark" aria-hidden="true"></span><svg class="wordmark" aria-hidden="true"><use href="#i-wordmark"/></svg></a>
+        <p class="footer-line">AI automation, integrations, workflows, agents and chatbots, built into your ecosystem.</p>
+        <a class="pill pill-signal footer-cta" href="#contact">Book a call</a>
+      </div>
+      <nav class="footer-cols" aria-label="Footer">
+        <div class="footer-group">
+          <p class="footer-h">Solutions</p>
+          <ul>
+            <li><a href="#solutions" data-way="0">Automation solutions</a></li>
+            <li><a href="#solutions" data-way="1">AI integrations</a></li>
+            <li><a href="#solutions" data-way="2">AI workflows</a></li>
+            <li><a href="#solutions" data-way="3">AI agents and chatbots</a></li>
+          </ul>
+        </div>
+        <div class="footer-group">
+          <p class="footer-h">Company</p>
+          <ul>
+            <li><a href="#platform">How we work</a></li>
+            <li><a href="#compare">Why Orca</a></li>
+            <li><a href="#playbook">Playbook</a></li>
+            <li><a href="#questions">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-group">
+          <p class="footer-h">Contact</p>
+          <ul>
+            <li><a href="mailto:orcaaiofficial1@gmail.com">orcaaiofficial1@gmail.com</a></li>
+            <li><a href="tel:+201002743113">+20 100 274 3113</a></li>
+            <li><a href="https://wa.me/201002743113" target="_blank" rel="noopener">WhatsApp</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span data-year>2026</span> Orca AI. All rights reserved.</p>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<!-- STUDIO: brief wizard -->
+<div class="studio" id="studio" hidden>
+  <div class="studio-scrim" data-close></div>
+  <div class="studio-card" role="dialog" aria-modal="true" aria-labelledby="studio-title">
+    <div class="studio-head">
+      <ol class="studio-steps" aria-label="Progress">
+        <li data-s="0"><span>Describe</span><i></i></li>
+        <li data-s="1"><span>Plan</span><i></i></li>
+        <li data-s="2"><span>Stack</span><i></i></li>
+        <li data-s="3"><span>Blueprint</span><i></i></li>
+        <li data-s="4"><span>Send</span><i></i></li>
+      </ol>
+      <button class="studio-x" type="button" data-close aria-label="Close"><svg class="ico"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="studio-view">
+      <form class="sp" data-panel="describe" data-step="0">
+        <h2 class="sp-title" id="studio-title">Describe the work.</h2>
+        <label class="sr-only" for="studio-text">What do you want to automate?</label>
+        <textarea id="studio-text" class="sp-text" rows="3" maxlength="600" required placeholder="Our team answers the same order questions on WhatsApp all day. We want an agent that replies in Arabic and English and updates Zoho."></textarea>
+        <p class="sp-note">The process, the tools involved and who does it today help. Plain words are fine.</p>
+        <div class="sp-chips">
+          <button type="button" data-fill="I want an AI agent to answer customers on WhatsApp and my website">An agent for WhatsApp and my website</button>
+          <button type="button" data-fill="I want to automate data entry between email, our CRM and our ERP">Automate data entry between my tools</button>
+          <button type="button" data-fill="I want an internal assistant that answers my team's questions from our documents">An assistant trained on our documents</button>
+          <button type="button" data-fill="I want weekly reports written automatically from our sales and operations data">Reports that write themselves</button>
+        </div>
+        <div class="sp-actions"><button class="pill pill-ink" type="submit">Plan my build</button></div>
+      </form>
+      <div class="sp sp-loading" data-panel="loading" data-step="1" aria-live="polite">
+        <h2 class="sp-title">Planning your build</h2>
+        <ul class="sp-checks">
+          <li>Reading your description</li>
+          <li>Spotting the repetitive steps</li>
+          <li>Picking the right building blocks</li>
+          <li>Drafting your blueprint</li>
+        </ul>
+      </div>
+      <form class="sp" data-panel="stack" data-step="2">
+        <h2 class="sp-title">Which tools are involved?</h2>
+        <p class="sp-note">Pick all that apply, so the blueprint fits your stack.</p>
+        <div class="sp-tools">
+          <label><input type="checkbox" name="tools" value="WhatsApp"><span>WhatsApp</span></label>
+          <label><input type="checkbox" name="tools" value="Website"><span>Website</span></label>
+          <label><input type="checkbox" name="tools" value="Email"><span>Email</span></label>
+          <label><input type="checkbox" name="tools" value="CRM"><span>CRM</span></label>
+          <label><input type="checkbox" name="tools" value="ERP"><span>ERP</span></label>
+          <label><input type="checkbox" name="tools" value="Google Sheets"><span>Google Sheets</span></label>
+          <label><input type="checkbox" name="tools" value="Slack or Teams"><span>Slack or Teams</span></label>
+          <label><input type="checkbox" name="tools" value="Shopify"><span>Shopify</span></label>
+          <label><input type="checkbox" name="tools" value="Custom system"><span>Custom system</span></label>
+        </div>
+        <div class="sp-actions"><button class="sp-back" type="button" data-to="describe">Edit description</button><button class="pill pill-ink" type="submit">Continue</button></div>
+      </form>
+      <div class="sp" data-panel="blueprint" data-step="3">
+        <h2 class="sp-title"><span class="bp-count">0</span> building blocks fit your brief.</h2>
+        <p class="sp-note">A first sketch. The Orca team refines it with you on a call.</p>
+        <ul class="bp-grid"></ul>
+        <div class="sp-actions"><button class="sp-back" type="button" data-to="stack">Back</button><button class="pill pill-ink" type="button" data-to="contact">Send me the plan</button></div>
+      </div>
+      <form class="sp" data-panel="contact" data-step="4">
+        <h2 class="sp-title">How can we reach you?</h2>
+        <p class="sp-note">Your brief and blueprint go straight to the Orca team.</p>
+        <div class="ct-grid">
+          <label class="bf"><span>Full name</span><input name="name" autocomplete="name" required maxlength="200"></label>
+          <label class="bf"><span>Company</span><input name="company" autocomplete="organization" maxlength="200"></label>
+          <label class="bf"><span>Work email</span><input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+          <label class="bf"><span>Phone or WhatsApp</span><input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+        </div>
+        <div class="sp-actions"><button class="sp-back" type="button" data-to="blueprint">Back</button><button class="pill pill-soft" type="submit" value="whatsapp">Send on WhatsApp</button><button class="pill pill-ink" type="submit" value="email">Send by email</button></div>
+      </form>
+      <div class="sp" data-panel="done" data-step="4">
+        <h2 class="sp-title">Your brief is ready to send.</h2>
+        <p class="sp-note">We opened it in your email or WhatsApp. Press send, and the Orca team replies with first ideas and a time to talk.</p>
+        <div class="sp-actions"><button class="sp-back" type="button" data-close>Close</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
