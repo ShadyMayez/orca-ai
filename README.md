@@ -2,7 +2,7 @@
 
 Marketing site for **Orca AI**: automation solutions, AI integrations, AI workflows, and AI agents and chatbots embedded across a company's ecosystem.
 
-Live: https://shadymayez.github.io/orca-ai/
+Live: https://orcaai.website/
 
 ## Stack
 
