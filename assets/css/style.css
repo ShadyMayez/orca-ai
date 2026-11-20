@@ -104,11 +104,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ico-s { width: 14px; height: 14px; }
 .mark {
   display: inline-block; width: 1em; height: 1.02em; flex: none;
-  background: url("../brand/orca-mark-bold.svg?v=20261120214755") center / contain no-repeat;
+  background: url("../brand/orca-mark-bold.svg?v=20261120215101") center / contain no-repeat;
 }
 /* on black surfaces the ring turns white, the R stays red */
-.hub-core .mark, .match-core .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120214755"); }
-.cmp-us .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120214755"); }
+.hub-core .mark, .match-core .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120215101"); }
+.cmp-us .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120215101"); }
 .wordmark { height: 11px; width: auto; aspect-ratio: 166 / 20; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: square; overflow: visible; }
 
 /* ---------- Pills ---------- */
@@ -139,11 +139,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .nav-logo { display: inline-flex; align-items: center; gap: calc(0.55 * var(--nu)); flex: none; height: 100%; color: var(--ink); }
 .nav-logo .mark { font-size: calc(1.75 * var(--nu)); }
 .nav-logo .wordmark { height: calc(0.64 * var(--nu)); stroke-width: 2.5; }
-.nav-links { flex: 1; display: flex; align-items: center; justify-content: flex-start; gap: 0; margin-left: calc(1.8 * var(--nu)); }
-.nav-links > .nav-item:first-child .nav-top { padding-left: calc(0.4 * var(--nu)); }
+.nav-links { flex: 1; display: flex; align-items: center; justify-content: space-evenly; gap: 0; margin: 0 calc(0.8 * var(--nu)); }
 .nav-item { position: relative; }
 .nav-top {
-  display: inline-flex; align-items: center; gap: 4px; height: 40px; padding: 0 calc(1.1 * var(--nu)); border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 4px; height: 40px; padding: 0 calc(0.7 * var(--nu)); border-radius: 999px; white-space: nowrap;
   font-size: 13px; font-weight: 400; color: var(--ink);
   transition: color 160ms var(--ease-out);
 }
