@@ -2,7 +2,7 @@
 
 - Static site (HTML/CSS/JS, no build). Deployed by GitHub Pages from `main` of `ShadyMayez/orca-ai`: https://shadymayez.github.io/orca-ai/
 - Layout and motion follow alfangroup.com by the owner's request; brand, colours and copy are Orca AI's own. Never add client logos, press, testimonials or result numbers that the owner has not supplied.
-- Brand: black and white logo (`assets/brand/`), one red signal colour (`--signal` #e8132e), font Sora. Light theme only, all-white full-width page (owner removed dark mode). All colours go through tokens in `:root`. Reel cards are square.
+- Brand: logo mark is a black ring with a red R (white ring on black surfaces; `orca-mark-bold*.svg` for UI sizes, `orca-ai-icon-*-bg.svg` full size); one red signal colour (`--signal` #e8132e), font Sora. Light theme only, all-white full-width page (owner removed dark mode). All colours go through tokens in `:root`. Reel cards are square.
 - Contact shown on the page: orcaaiofficial1@gmail.com, +20 100 274 3113 (WhatsApp wa.me/201002743113).
 - Form delivery: "Plan my build" and the contact form POST to FormSubmit (`https://formsubmit.co/ajax/shadymayezs@gmail.com`, set as `INBOX` in `main.js`). FormSubmit needs a one-time activation link clicked in that inbox after the first submission.
 - Design and copy skills to use on this project (installed as user-scope plugins, also declared in `.claude/settings.json`):

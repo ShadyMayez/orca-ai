@@ -94,10 +94,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ico-s { width: 14px; height: 14px; }
 .mark {
   display: inline-block; width: 1em; height: 1.02em; flex: none;
-  background: currentColor;
-  -webkit-mask: url("../brand/orca-mark.svg") center / contain no-repeat;
-  mask: url("../brand/orca-mark.svg") center / contain no-repeat;
+  background: url("../brand/orca-mark-bold.svg") center / contain no-repeat;
 }
+/* on black surfaces the ring turns white, the R stays red */
+.hub-core .mark, .match-core .mark, .cmp-us .mark { background-image: url("../brand/orca-mark-bold-dark.svg"); }
 .wordmark { height: 11px; width: auto; aspect-ratio: 166 / 20; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: square; overflow: visible; }
 
 /* ---------- Pills ---------- */
@@ -126,7 +126,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   box-shadow: var(--shadow-float);
 }
 .nav-logo { display: inline-flex; align-items: center; gap: 12px; flex: none; height: 48px; color: var(--ink); }
-.nav-logo .mark { font-size: 40px; color: var(--signal); }
+.nav-logo .mark { font-size: 40px; }
 .nav-logo .wordmark { height: 15px; stroke-width: 2.5; }
 .nav-links { flex: 1; display: flex; align-items: center; justify-content: space-evenly; gap: 2px; margin: 0 12px; }
 .nav-item { position: relative; }
@@ -542,7 +542,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .footer-card { width: min(var(--container), 100%); margin: 0 auto; padding: clamp(32px, 5vw, 64px); border-radius: var(--radius-xl); box-shadow: inset 0 0 0 1px var(--rule); background: var(--footer-bg); color: var(--footer-ink); }
 .footer-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 40px; }
 .footer-logo { display: inline-flex; align-items: center; gap: 12px; color: var(--footer-head); }
-.footer-logo .mark { font-size: 44px; color: var(--signal); }
+.footer-logo .mark { font-size: 44px; }
 .footer-logo .wordmark { height: 13px; }
 .footer-line { margin-top: 18px; max-width: 34ch; color: var(--footer-soft); }
 .footer-cta { margin-top: 24px; }
