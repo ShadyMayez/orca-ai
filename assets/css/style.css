@@ -103,11 +103,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ico-s { width: 14px; height: 14px; }
 .mark {
   display: inline-block; width: 1em; height: 1.02em; flex: none;
-  background: url("../brand/orca-mark-bold.svg?v=20261120213803") center / contain no-repeat;
+  background: url("../brand/orca-mark-bold.svg?v=20261120214145") center / contain no-repeat;
 }
 /* on black surfaces the ring turns white, the R stays red */
-.hub-core .mark, .match-core .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120213803"); }
-.cmp-us .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120213803"); }
+.hub-core .mark, .match-core .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120214145"); }
+.cmp-us .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=20261120214145"); }
 .wordmark { height: 11px; width: auto; aspect-ratio: 166 / 20; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: square; overflow: visible; }
 
 /* ---------- Pills ---------- */
@@ -704,7 +704,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .marquee-track { animation: drift 52s linear infinite; }
-  .marquee:hover .marquee-track { animation-play-state: paused; }
   @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 }
 

@@ -158,7 +158,7 @@
       var copy = card.cloneNode(true); copy.setAttribute('aria-hidden', 'true'); track.appendChild(copy);
     });
     var cards = $$('.arc-card', track);
-    var offset = 0, last = 0, running = false, hover = false, dragging = false, startX = 0, startOff = 0, raf = 0;
+    var offset = 0, last = 0, running = false, dragging = false, startX = 0, startOff = 0, raf = 0;
     var SPEED = 0.045; // px per ms
     var w = 0, step = 0, total = 0, half = 600;
     function measure() { w = cards[0].offsetWidth; step = w + 26; total = step * cards.length; half = arc.clientWidth / 2 || 600; }
@@ -178,13 +178,11 @@
     function frame(now) {
       raf = requestAnimationFrame(frame);
       var dt = last ? Math.min(64, now - last) : 16; last = now;
-      if (!hover && !dragging) offset -= SPEED * dt;
+      if (!dragging) offset -= SPEED * dt; // always moving, hover never pauses it
       place();
     }
     function start() { if (running) return; running = true; last = 0; raf = requestAnimationFrame(frame); }
     function stop() { running = false; cancelAnimationFrame(raf); }
-    arc.addEventListener('mouseenter', function () { hover = true; });
-    arc.addEventListener('mouseleave', function () { hover = false; });
     arc.addEventListener('pointerdown', function (e) {
       dragging = true; startX = e.clientX; startOff = offset; arc.classList.add('is-dragging');
       arc.setPointerCapture(e.pointerId);
@@ -254,10 +252,6 @@
         if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); select(idx - 1, true); }
       });
     });
-    pv.addEventListener('mouseenter', function () { paused = true; });
-    pv.addEventListener('mouseleave', function () { paused = false; });
-    pv.addEventListener('focusin', function () { paused = true; });
-    pv.addEventListener('focusout', function () { paused = false; });
     new IntersectionObserver(function (es) {
       es.forEach(function (en) {
         var was = visible; visible = en.isIntersecting;
