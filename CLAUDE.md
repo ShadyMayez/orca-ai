@@ -12,3 +12,4 @@
   - `egm` (google/elephant-goldfish-model): design and review with fresh-context agents.
   - `craft-anything` (in `~/.claude/skills`): evidence-first investigation of shipped sites and apps.
 - Preview: `.claude/launch.json` serves the folder on port 8765.
+- Cache busting: GitHub Pages caches files for 10 minutes. After changing CSS or JS, bump the `?v=` stamp on `style.css`/`main.js` in `index.html` and on the `../brand/*.svg` urls in `style.css` (all use the same stamp), so the page and its assets never mix versions.

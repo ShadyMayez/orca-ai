@@ -22,6 +22,11 @@
   --signal: #e8132e;
   --signal-ink: #d0102a;
   --signal-soft: rgba(232, 19, 46, 0.09);
+  --signal-hi: #ff2a45;
+  --signal-lo: #c20d27;
+  --red-shadow: rgba(232, 19, 46, 0.32);
+  --on-red-rule: rgba(255, 255, 255, 0.24);
+  --on-red-soft: rgba(255, 255, 255, 0.75);
   --glow: rgba(255, 30, 60, 0.28);
   --on-ink: #ffffff;
   --on-signal: #ffffff;
@@ -94,10 +99,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ico-s { width: 14px; height: 14px; }
 .mark {
   display: inline-block; width: 1em; height: 1.02em; flex: none;
-  background: url("../brand/orca-mark-bold.svg") center / contain no-repeat;
+  background: url("../brand/orca-mark-bold.svg?v=202611201826") center / contain no-repeat;
 }
 /* on black surfaces the ring turns white, the R stays red */
-.hub-core .mark, .match-core .mark, .cmp-us .mark { background-image: url("../brand/orca-mark-bold-dark.svg"); }
+.hub-core .mark, .match-core .mark { background-image: url("../brand/orca-mark-bold-dark.svg?v=202611201826"); }
+.cmp-us .mark { background-image: url("../brand/orca-mark-bold-allwhite.svg?v=202611201826"); }
 .wordmark { height: 11px; width: auto; aspect-ratio: 166 / 20; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: square; overflow: visible; }
 
 /* ---------- Pills ---------- */
@@ -187,7 +193,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .js .entered .r2 { animation-delay: 0.18s; }
 .js .entered .r3 { animation-delay: 0.36s; }
 @keyframes ring-draw { to { stroke-dashoffset: 0; } }
-.hero-rings { animation: ring-spin 120s linear infinite; }
+.hero-rings { animation: ring-spin 120s linear infinite; will-change: transform; }
 @keyframes ring-spin { to { rotate: 360deg; } }
 
 .hero-copy { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; max-width: 980px; margin: 0 auto; }
@@ -329,7 +335,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   background: var(--sheet);
 }
 .js .sheet { opacity: 0; transform: translateY(60px); }
-.js .settled .sheet, .js.settled .sheet { opacity: 1; transform: none; transition: opacity 900ms var(--ease-out), transform 1300ms var(--ease-out); }
+.js .settled .sheet, .js.settled .sheet { opacity: 1; transform: none; transition: opacity 600ms var(--ease-out), transform 800ms var(--ease-out); }
 
 .section { padding: clamp(72px, 9vw, 128px) clamp(20px, 5vw, 72px) 0; }
 .h2 { margin: 0 auto; max-width: 24ch; text-align: center; text-wrap: balance; font-size: clamp(28px, 3.2vw, 46px); line-height: 1.1; font-weight: 300; letter-spacing: -0.03em; overflow-wrap: break-word; min-width: 0; }
@@ -469,19 +475,24 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .cmp-labels { display: flex; flex-direction: column; }
 .cmp-labels li { font-size: 14px; color: var(--ink-faint); padding: 0 6px; border-bottom: 1px solid var(--rule); }
 .cmp-labels .cmp-corner, .cmp-card header { height: 84px; min-height: 84px; border-bottom: 0; }
-.cmp-card { border-radius: 24px; background: var(--surface); padding: 0 20px 8px; }
-.cmp-card header { display: flex; align-items: center; gap: 12px; }
-.cmp-card h3 { font-size: 17px; font-weight: 500; }
-.cmp-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--sheet); color: var(--ink-faint); }
-.cmp-card li { gap: 10px; font-size: 14.5px; color: var(--ink-soft); border-top: 1px solid var(--rule); }
-.cmp-card li .ico { width: 18px; height: 18px; }
-.cmp-card li .ico.x { color: var(--ink-faint); opacity: 0.6; }
-.cmp-us { background: var(--btn); color: var(--btn-ink); box-shadow: 0 24px 60px var(--glow); }
-.cmp-us li { color: var(--btn-ink); border-top-color: color-mix(in srgb, var(--btn-ink) 14%, transparent); }
-.cmp-us li .ico { color: var(--signal); stroke-width: 2.4; }
-.cmp-logo { display: inline-flex; align-items: center; gap: 10px; }
-.cmp-logo .mark { font-size: 28px; }
-.cmp-logo .wordmark { height: 12px; }
+.cmp-card { border-radius: 28px; background: var(--sheet); padding: 0 22px 10px; box-shadow: inset 0 0 0 1px var(--rule); }
+.cmp-card header { display: flex; align-items: center; gap: 14px; }
+.cmp-card h3 { font-size: 18px; font-weight: 600; }
+.cmp-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--signal-soft); color: var(--signal-ink); }
+.cmp-card li { gap: 12px; font-size: 14.5px; color: var(--ink-soft); border-top: 1px solid var(--rule); }
+.cmp-card li .ico { width: 18px; height: 18px; flex: none; }
+.cmp-card li .ico.x { color: var(--ink-faint); opacity: 0.5; }
+/* the Orca column: red, taller than its neighbours, bold white type */
+.cmp-us {
+  margin: -22px 0; padding: 22px 26px 32px; border-radius: 32px; color: var(--on-signal);
+  background: linear-gradient(165deg, var(--signal-hi), var(--signal) 45%, var(--signal-lo));
+  box-shadow: 0 30px 70px var(--red-shadow);
+}
+.cmp-us li { color: var(--on-signal); font-weight: 600; font-size: 15px; border-top-color: var(--on-red-rule); }
+.cmp-us li .ico { color: var(--on-signal); stroke-width: 2.6; }
+.cmp-logo { display: inline-flex; align-items: center; gap: 12px; color: var(--on-signal); }
+.cmp-logo .mark { font-size: 40px; }
+.cmp-logo .wordmark { height: 16px; stroke-width: 2.6; }
 
 /* ---------- News / playbook ---------- */
 .news-lead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 32px; max-width: 1240px; margin: clamp(40px, 5vw, 64px) auto 0; padding: clamp(24px, 3vw, 44px); border-radius: 32px; background: var(--surface); transition: transform 300ms var(--ease-out); }
@@ -623,7 +634,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .cmp-labels { display: none; }
   .cmp-card li { flex-wrap: wrap; min-height: 0; padding: 12px 0; }
   .cmp-card li::before { content: attr(data-q); flex-basis: 100%; font-size: 12.5px; color: var(--ink-faint); }
-  .cmp-us li::before { color: color-mix(in srgb, var(--btn-ink) 60%, transparent); }
+  .cmp-us li::before { color: var(--on-red-soft); font-weight: 400; }
+  .cmp-us { margin: 8px 0; }
   .cmp-card header { height: 72px; min-height: 72px; }
   .news-lead { grid-template-columns: minmax(0, 1fr); }
   .news-list { grid-template-columns: minmax(0, 1fr); }
