@@ -343,79 +343,60 @@
       <p class="chapter-line rv">Software used to wait for people. Now it works beside them.</p>
       <h2 id="chapter-title" class="h2 rv">AI that scales with <span class="accent">you.</span></h2>
       <p class="h2-sub rv">Tell us the job. Orca maps the process, designs the agent, builds it, launches it with your approval and tunes it every week. You decide how hands-on to be.</p>
-      <div class="pv rv" data-pv data-ms="4500">
-        <ol class="pv-steps" role="tablist" aria-label="How a project runs with Orca AI">
-          <li><button class="pv-step" type="button" role="tab" id="st-0" aria-controls="steps-panel" aria-selected="true"><span class="pv-num" aria-hidden="true">1</span><span class="pv-name">Discover</span><span class="pv-desc"><span><b>We map where the hours go.</b> One call and a walk through your tools to find the work AI should own first.</span></span><span class="pv-bar"><i></i></span></button></li>
-          <li><button class="pv-step" type="button" role="tab" id="st-1" aria-controls="steps-panel" aria-selected="false" tabindex="-1"><span class="pv-num" aria-hidden="true">2</span><span class="pv-name">Design</span><span class="pv-desc"><span><b>You get a blueprint, not a pitch deck.</b> Goal, systems, guardrails and the measure of success, agreed before we build.</span></span><span class="pv-bar"><i></i></span></button></li>
-          <li><button class="pv-step" type="button" role="tab" id="st-2" aria-controls="steps-panel" aria-selected="false" tabindex="-1"><span class="pv-num" aria-hidden="true">3</span><span class="pv-name">Build</span><span class="pv-desc"><span><b>Orca engineers build it into your stack.</b> Your accounts, your data, your brand voice. Tested on your real cases.</span></span><span class="pv-bar"><i></i></span></button></li>
-          <li><button class="pv-step" type="button" role="tab" id="st-3" aria-controls="steps-panel" aria-selected="false" tabindex="-1"><span class="pv-num" aria-hidden="true">4</span><span class="pv-name">Launch</span><span class="pv-desc"><span><b>You approve, then it goes live.</b> Start with a pilot and human review, widen it when you trust it.</span></span><span class="pv-bar"><i></i></span></button></li>
-          <li><button class="pv-step" type="button" role="tab" id="st-4" aria-controls="steps-panel" aria-selected="false" tabindex="-1"><span class="pv-num" aria-hidden="true">5</span><span class="pv-name">Improve</span><span class="pv-desc"><span><b>It gets sharper every week.</b> We review the hard cases, tune prompts and add new skills as you grow.</span></span><span class="pv-bar"><i></i></span></button></li>
+      <div class="arc rv" data-arc>
+        <ol class="arc-track" aria-label="How a project runs with Orca AI">
+          <li class="arc-card">
+            <div class="ac-head"><span class="ac-num">1</span><b>Discover</b><span class="ui-pill">Process map</span></div>
+            <ul class="procs">
+              <li><span>Answering order questions</span><b class="hot">Automate first</b></li>
+              <li><span>Copying invoices into the ERP</span><b class="hot">Automate first</b></li>
+              <li><span>Weekly sales report</span><b class="warm">Next</b></li>
+              <li><span>Supplier negotiations</span><b class="cool">Keep human</b></li>
+            </ul>
+            <p class="ac-cap"><b>We map where the hours go.</b> One call and a walk through your tools.</p>
+          </li>
+          <li class="arc-card">
+            <div class="ac-head"><span class="ac-num">2</span><b>Design</b><span class="ui-pill">Blueprint</span></div>
+            <dl class="bp">
+              <div><dt>Goal</dt><dd>Answer every order question in a minute</dd></div>
+              <div><dt>Systems</dt><dd>WhatsApp, Shopify, Zoho CRM</dd></div>
+              <div><dt>Guardrails</dt><dd>Refunds go to a person</dd></div>
+            </dl>
+            <p class="ac-cap"><b>A blueprint, not a pitch deck.</b> Agreed before we build.</p>
+          </li>
+          <li class="arc-card">
+            <div class="ac-head"><span class="ac-num">3</span><b>Build</b><span class="ui-pill">Build log</span></div>
+            <ul class="log">
+              <li><b>connect</b> shopify.orders</li>
+              <li><b>connect</b> whatsapp.business</li>
+              <li><b>tone</b> brand voice, Arabic and English</li>
+              <li><b>guard</b> refunds route to a person</li>
+              <li><b class="ok">pass</b> test suite</li>
+            </ul>
+            <p class="ac-cap"><b>Built into your stack.</b> Tested on your real cases.</p>
+          </li>
+          <li class="arc-card">
+            <div class="ac-head"><span class="ac-num">4</span><b>Launch</b><span class="ui-pill">Go live</span></div>
+            <ul class="toggles">
+              <li><span>Human review on replies</span><i class="sw on"></i></li>
+              <li><span>Pilot on 10% of chats</span><i class="sw on"></i></li>
+              <li><span>Live for all customers</span><i class="sw on"></i></li>
+            </ul>
+            <p class="golive"><svg class="ico"><use href="#i-check"/></svg>Approved by you. Agent is live.</p>
+            <p class="ac-cap"><b>You approve, then it goes live.</b> Pilot first, then everyone.</p>
+          </li>
+          <li class="arc-card">
+            <div class="ac-head"><span class="ac-num">5</span><b>Improve</b><span class="ui-pill">Week 6</span></div>
+            <ul class="tasks">
+              <li><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Reviewed the hardest chats</li>
+              <li><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Added the new return policy</li>
+              <li><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Taught it to book installs</li>
+            </ul>
+            <p class="ac-cap"><b>Sharper every week.</b> We tune it and add skills as you grow.</p>
+          </li>
         </ol>
-        <div class="pv-stage" role="tabpanel" id="steps-panel" aria-labelledby="st-0">
-          <div class="pv-frame">
-            <div class="scene sc-disc is-front">
-              <div class="ui-card">
-                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-search"/></svg>Process map</span><span class="ui-pill">Discovery</span></div>
-                <ul class="procs">
-                  <li style="--i:0"><span>Answering order questions</span><b class="hot">Automate first</b></li>
-                  <li style="--i:1"><span>Copying invoices into the ERP</span><b class="hot">Automate first</b></li>
-                  <li style="--i:2"><span>Weekly sales report</span><b class="warm">Next</b></li>
-                  <li style="--i:3"><span>Supplier negotiations</span><b class="cool">Keep human</b></li>
-                  <li style="--i:4"><span>Lead follow-ups</span><b class="hot">Automate first</b></li>
-                </ul>
-              </div>
-            </div>
-            <div class="scene sc-design">
-              <div class="ui-card">
-                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-file"/></svg>Blueprint</span><span class="ui-pill">Draft</span></div>
-                <dl class="bp">
-                  <div style="--i:0"><dt>Goal</dt><dd>Answer every order question in under a minute</dd></div>
-                  <div style="--i:1"><dt>Systems</dt><dd>WhatsApp, Shopify, Zoho CRM</dd></div>
-                  <div style="--i:2"><dt>Guardrails</dt><dd>Refunds and complaints go to a person</dd></div>
-                  <div style="--i:3"><dt>Success</dt><dd>Fewer tickets reaching the team</dd></div>
-                </dl>
-              </div>
-            </div>
-            <div class="scene sc-build">
-              <div class="ui-card term">
-                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-code"/></svg>Build log</span><span class="ui-pill">Building</span></div>
-                <ul class="log">
-                  <li style="--i:0"><b>connect</b> shopify.orders</li>
-                  <li style="--i:1"><b>connect</b> whatsapp.business</li>
-                  <li style="--i:2"><b>load</b> 214 past conversations as tests</li>
-                  <li style="--i:3"><b>tone</b> brand voice, Arabic and English</li>
-                  <li style="--i:4"><b>guard</b> refunds route to a person</li>
-                  <li style="--i:5"><b class="ok">pass</b> test suite</li>
-                </ul>
-              </div>
-            </div>
-            <div class="scene sc-launch">
-              <div class="ui-card">
-                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-approve"/></svg>Go-live checklist</span><span class="ui-pill">Pilot</span></div>
-                <ul class="toggles">
-                  <li style="--i:0"><span>Human review on replies</span><i class="sw on"></i></li>
-                  <li style="--i:1"><span>Pilot on 10% of chats</span><i class="sw on"></i></li>
-                  <li style="--i:2"><span>Escalation to the team</span><i class="sw on"></i></li>
-                  <li style="--i:3"><span>Live for all customers</span><i class="sw late"></i></li>
-                </ul>
-                <p class="golive" style="--i:4"><svg class="ico"><use href="#i-check"/></svg>Approved by you. Agent is live.</p>
-              </div>
-            </div>
-            <div class="scene sc-improve">
-              <div class="ui-card">
-                <div class="ui-head"><span class="ui-title"><svg class="ico"><use href="#i-refresh"/></svg>This week's tuning</span><span class="ui-pill">Week 6</span></div>
-                <ul class="tasks">
-                  <li style="--i:0"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Reviewed the hardest conversations</li>
-                  <li style="--i:1"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Added answers for the new return policy</li>
-                  <li style="--i:2"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Taught the agent to book installations</li>
-                  <li style="--i:3"><span class="tk"><svg class="ico"><use href="#i-check"/></svg></span>Connected the warehouse sheet</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="pv-more" href="#contact"><span>Start with <span class="pv-more-name">Discover</span></span><svg class="ico"><use href="#i-arrow"/></svg></a>
       </div>
+      <a class="pv-more arc-more rv" href="#contact"><span>Start with Discover</span><svg class="ico"><use href="#i-arrow"/></svg></a>
     </section>
 
     <!-- GETS -->

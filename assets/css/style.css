@@ -680,3 +680,46 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 [hidden] { display: none !important; }
 .done-link { color: var(--signal-ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- How we work: curved card carousel ---------- */
+.arc {
+  --cw: clamp(276px, 23vw, 340px);
+  --cr: 1.1;
+  position: relative; margin: clamp(36px, 4vw, 56px) calc(-1 * clamp(20px, 5vw, 72px)) 0;
+  height: calc(var(--cw) * var(--cr) + 110px);
+  perspective: 1000px; perspective-origin: 50% 50%;
+  cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+}
+.arc.is-dragging { cursor: grabbing; }
+.arc-track { position: absolute; inset: 0; transform-style: preserve-3d; }
+.arc-card {
+  position: absolute; left: 50%; top: 50%; width: var(--cw); height: calc(var(--cw) * var(--cr));
+  margin: calc(var(--cw) * var(--cr) / -2) 0 0 calc(var(--cw) / -2);
+  display: flex; flex-direction: column; gap: 10px; padding: 18px;
+  border-radius: 28px; background: var(--sheet); box-shadow: var(--shadow-soft), inset 0 0 0 1px var(--rule);
+  backface-visibility: hidden; will-change: transform;
+}
+.ac-head { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.ac-num { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: var(--signal-soft); color: var(--signal-ink); font-weight: 600; font-size: 15px; flex: none; }
+.ac-head b { font-size: 18px; font-weight: 600; margin-right: auto; }
+.arc-card .procs, .arc-card .bp, .arc-card .log, .arc-card .toggles, .arc-card .tasks { gap: 6px; }
+.arc-card .procs li, .arc-card .toggles li, .arc-card .tasks li { padding: 8px 10px; font-size: 13px; }
+.arc-card .bp div { padding: 7px 10px; }
+.arc-card .bp dd { font-size: 13px; }
+.arc-card .log { font-size: 12px; }
+.arc-card .log li { padding: 5px 8px; }
+.arc-card .tk { width: 20px; height: 20px; }
+.arc-card .golive { font-size: 13px; padding: 8px 10px; }
+.ac-cap { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--ink-soft); line-height: 1.45; }
+.ac-cap b { color: var(--ink); font-weight: 600; }
+.arc-more { display: flex; width: max-content; margin: 8px auto 0; }
+/* without script, or with reduced motion: a plain scrolling row */
+.no-js .arc, .arc.static { height: auto; perspective: none; cursor: auto; overflow-x: auto; scroll-snap-type: x mandatory; padding: 12px clamp(20px, 5vw, 72px) 24px; }
+.no-js .arc-track, .arc.static .arc-track { position: static; display: flex; gap: 20px; width: max-content; }
+.no-js .arc-card, .arc.static .arc-card { position: relative; left: auto; top: auto; margin: 0; scroll-snap-align: center; }
+@media (max-width: 640px) {
+  .arc { --cw: 272px; --cr: 1.38; perspective: 900px; }
+  .arc-card { padding: 14px; gap: 8px; }
+  .ac-head b { font-size: 16px; }
+  .ac-cap { font-size: 12.5px; }
+}

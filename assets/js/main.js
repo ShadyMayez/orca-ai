@@ -147,6 +147,58 @@
     layout();
   })();
 
+  /* ---------- How we work: curved, drifting card row ---------- */
+  (function arcRow() {
+    var arc = $('[data-arc]');
+    if (!arc) return;
+    var track = $('.arc-track', arc);
+    if (reduce.matches) { arc.classList.add('static'); return; }
+    // Two extra copies so the loop never shows a gap.
+    var originals = $$('.arc-card', track);
+    for (var c = 0; c < 2; c++) originals.forEach(function (card) {
+      var copy = card.cloneNode(true); copy.setAttribute('aria-hidden', 'true'); track.appendChild(copy);
+    });
+    var cards = $$('.arc-card', track);
+    var offset = 0, last = 0, running = false, hover = false, dragging = false, startX = 0, startOff = 0, raf = 0;
+    var SPEED = 0.045; // px per ms
+    function place() {
+      var w = cards[0].offsetWidth, step = w + 26, total = step * cards.length, half = arc.clientWidth / 2 || 600;
+      cards.forEach(function (card, i) {
+        var x = (((i * step + offset) % total) + total) % total - total / 2;
+        var d = x / (half + w * 0.2);
+        var a = Math.min(1.6, Math.abs(d));
+        if (Math.abs(x) > half + w * 1.4) { card.style.visibility = 'hidden'; return; }
+        card.style.visibility = '';
+        var ry = Math.max(-48, Math.min(48, -d * 34));
+        card.style.transform = 'translateX(' + (x * 0.94).toFixed(1) + 'px) translateZ(' + (a * a * 190).toFixed(1) + 'px) rotateY(' + ry.toFixed(2) + 'deg)';
+        card.style.zIndex = String(Math.round(a * 100));
+      });
+    }
+    function frame(now) {
+      raf = requestAnimationFrame(frame);
+      var dt = last ? Math.min(64, now - last) : 16; last = now;
+      if (!hover && !dragging) offset -= SPEED * dt;
+      place();
+    }
+    function start() { if (running) return; running = true; last = 0; raf = requestAnimationFrame(frame); }
+    function stop() { running = false; cancelAnimationFrame(raf); }
+    arc.addEventListener('mouseenter', function () { hover = true; });
+    arc.addEventListener('mouseleave', function () { hover = false; });
+    arc.addEventListener('pointerdown', function (e) {
+      dragging = true; startX = e.clientX; startOff = offset; arc.classList.add('is-dragging');
+      arc.setPointerCapture(e.pointerId);
+    });
+    arc.addEventListener('pointermove', function (e) { if (dragging) offset = startOff + (e.clientX - startX); });
+    function end() { dragging = false; arc.classList.remove('is-dragging'); }
+    arc.addEventListener('pointerup', end);
+    arc.addEventListener('pointercancel', end);
+    window.addEventListener('resize', place);
+    new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) start(); else stop(); });
+    }, { rootMargin: '100px 0px' }).observe(arc);
+    place();
+  })();
+
   /* ---------- Scroll reveal ---------- */
   var rv = $$('.rv');
   if ('IntersectionObserver' in window && !reduce.matches) {
