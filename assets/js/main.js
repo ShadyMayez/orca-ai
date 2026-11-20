@@ -111,7 +111,7 @@
       });
     }
     function go(p) { pos = p; layout(); }
-    function auto() { stop(); timer = setInterval(function () { go(Math.round(pos) + 1); }, 3600); }
+    function auto() { stop(); timer = setInterval(function () { go(Math.round(pos) + 1); }, 2800); }
     function stop() { if (timer) clearInterval(timer); timer = null; }
 
     track.addEventListener('pointerdown', function (e) {
@@ -353,7 +353,7 @@
     var items = $$('.sp-checks li', studio);
     items.forEach(function (li) { li.className = ''; });
     var i = 0;
-    var gap = reduce.matches ? 60 : 650;
+    var gap = reduce.matches ? 60 : 280;
     (function next() {
       if (i > 0) { items[i - 1].classList.remove('busy'); items[i - 1].classList.add('ok'); }
       if (i === items.length) { setTimeout(done, gap / 2); return; }
