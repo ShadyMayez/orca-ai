@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Orca AI · AI agents, automations and integrations</title>
 <meta name="description" content="Orca AI builds automations, AI integrations, workflows, agents and chatbots that live inside the tools your team already uses.">
-<meta name="theme-color" content="#0A0B0D">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="Orca AI">
 <meta property="og:description" content="Put the busywork on AI autopilot. Automations, integrations, workflows, agents and chatbots built into your stack.">
 <meta property="og:type" content="website">
@@ -18,13 +18,12 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
 <script>
   (function () {
     var d = document.documentElement;
     d.classList.remove('no-js'); d.classList.add('js');
-    try { var t = localStorage.getItem('orca-theme'); if (t) d.setAttribute('data-theme', t); } catch (e) {}
   })();
 </script>
 </head>
@@ -96,11 +95,6 @@
       <a class="nav-top" href="#questions">FAQ</a>
       <a class="nav-top" href="#contact">Contact</a>
     </nav>
-    <div class="nav-tools">
-      <button class="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
-        <svg class="ico t-moon"><use href="#i-moon"/></svg><svg class="ico t-sun"><use href="#i-sun"/></svg>
-      </button>
-    </div>
     <a class="pill pill-ink nav-cta" href="#contact">Book a call</a>
     <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu"><span></span><span></span></button>
   </div>
@@ -120,7 +114,6 @@
     <a href="#contact">Contact</a>
     <div class="ns-foot">
       <a class="pill pill-ink" href="#contact">Book a call</a>
-      <button class="theme-toggle" type="button" aria-label="Switch colour theme"><svg class="ico t-moon"><use href="#i-moon"/></svg><svg class="ico t-sun"><use href="#i-sun"/></svg></button>
     </div>
   </div>
 </header>
@@ -155,17 +148,15 @@
         <figure class="reel-card rc-chat">
           <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-chat"/></svg>WhatsApp</span><span class="rc-live">Live</span></div>
           <div class="rc-body">
-            <p class="bub in" style="--i:0">Hi, do you ship to Alexandria?</p>
-            <p class="bub out" style="--i:1">Yes, in two to three days. Shall I reserve the blue one in size 42?</p>
+            <p class="bub in" style="--i:0">Do you ship to Alexandria?</p>
+            <p class="bub out" style="--i:1">Yes, in 2 to 3 days. Reserve the blue one in size 42?</p>
             <p class="bub in" style="--i:2">Yes please</p>
-            <p class="bub out" style="--i:3">Reserved. Your payment link is on its way.</p>
           </div>
-          <figcaption class="rc-cap"><b>Sales agent</b><span>Answers, qualifies, closes</span></figcaption>
+          <figcaption class="rc-cap"><b>Sales agent</b><span>Answers and closes</span></figcaption>
         </figure>
         <figure class="reel-card rc-doc">
           <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-file"/></svg>Email</span><span class="rc-live">Live</span></div>
           <div class="rc-body">
-            <div class="doc"><i></i><i></i><i class="hl"></i><i></i><i class="hl"></i><i></i></div>
             <ul class="fields">
               <li style="--i:0"><span>Vendor</span><b>Nile Supplies</b></li>
               <li style="--i:1"><span>Total</span><b>EGP 18,400</b></li>
@@ -173,37 +164,36 @@
               <li style="--i:3"><span>Status</span><b class="ok">Filed in ERP</b></li>
             </ul>
           </div>
-          <figcaption class="rc-cap"><b>Invoice reader</b><span>From inbox to ledger</span></figcaption>
+          <figcaption class="rc-cap"><b>Invoice reader</b><span>Inbox to ledger</span></figcaption>
         </figure>
         <figure class="reel-card rc-web">
           <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-globe"/></svg>Website</span><span class="rc-live">Live</span></div>
           <div class="rc-body">
-            <p class="bub in" style="--i:0">What's included in the premium plan?</p>
-            <p class="bub out" style="--i:1">Priority support, three seats and monthly reports. Want a quick comparison?</p>
+            <p class="bub in" style="--i:0">What's in the premium plan?</p>
+            <p class="bub out" style="--i:1">Priority support, three seats and monthly reports.</p>
             <div class="chips" style="--i:2"><span>Compare plans</span><span>Talk to sales</span></div>
           </div>
-          <figcaption class="rc-cap"><b>Website chatbot</b><span>Trained on your own docs</span></figcaption>
+          <figcaption class="rc-cap"><b>Website chatbot</b><span>Trained on your docs</span></figcaption>
         </figure>
         <figure class="reel-card rc-crm">
           <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-users"/></svg>CRM</span><span class="rc-live">Live</span></div>
           <div class="rc-body">
-            <div class="contact"><span class="avatar">MK</span><b>Mariam K.</b></div>
+            <div class="contact" style="--i:0"><span class="avatar">MK</span><b>Mariam K.</b></div>
             <ul class="fields">
-              <li style="--i:0"><span>Company</span><b>Delta Foods</b></li>
-              <li style="--i:1"><span>Source</span><b>Website chat</b></li>
-              <li style="--i:2"><span>Need</span><b>Order tracking bot</b></li>
+              <li style="--i:1"><span>Company</span><b>Delta Foods</b></li>
+              <li style="--i:2"><span>Source</span><b>Website chat</b></li>
               <li style="--i:3"><span>Stage</span><b class="ok">Qualified</b></li>
             </ul>
           </div>
-          <figcaption class="rc-cap"><b>CRM sync</b><span>Every lead logged, no typing</span></figcaption>
+          <figcaption class="rc-cap"><b>CRM sync</b><span>Every lead logged</span></figcaption>
         </figure>
         <figure class="reel-card rc-cal">
           <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-cal"/></svg>Calendar</span><span class="rc-live">Live</span></div>
           <div class="rc-body">
-            <div class="cal"><i></i><i class="busy"></i><i></i><i></i><i class="busy"></i><i></i><i class="book"></i><i></i><i class="busy"></i><i></i><i></i><i></i></div>
+            <div class="cal"><i></i><i class="busy"></i><i></i><i class="busy"></i><i></i><i class="book"></i><i class="busy"></i><i></i></div>
             <p class="booked">Thursday 11:00<br><b>Demo with Mariam</b></p>
           </div>
-          <figcaption class="rc-cap"><b>Meeting booker</b><span>Finds the slot, sends the invite</span></figcaption>
+          <figcaption class="rc-cap"><b>Meeting booker</b><span>Slot found, invite sent</span></figcaption>
         </figure>
         <figure class="reel-card rc-tri">
           <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-tag"/></svg>Helpdesk</span><span class="rc-live">Live</span></div>
@@ -211,11 +201,11 @@
             <ul class="tickets">
               <li style="--i:0"><span>Refund not received</span><b class="t-a">Billing</b></li>
               <li style="--i:1"><span>App crashes on login</span><b class="t-b">Bug</b></li>
-              <li style="--i:2"><span>Change delivery address</span><b class="t-c">Orders</b></li>
-              <li style="--i:3"><span>Card charged twice</span><b class="t-a">Billing</b></li>
+              <li style="--i:2"><span>Change my address</span><b class="t-c">Orders</b></li>
+              <li style="--i:3"><span>Charged twice</span><b class="t-a">Billing</b></li>
             </ul>
           </div>
-          <figcaption class="rc-cap"><b>Support triage</b><span>Tagged, routed, drafted</span></figcaption>
+          <figcaption class="rc-cap"><b>Support triage</b><span>Tagged and routed</span></figcaption>
         </figure>
         <figure class="reel-card rc-voice">
           <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-phone"/></svg>Calls</span><span class="rc-live">Live</span></div>
@@ -223,23 +213,22 @@
             <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <ul class="sum">
               <li style="--i:0">Wants 40 units by Monday</li>
-              <li style="--i:1">Asked for net-30 terms</li>
-              <li style="--i:2">Follow-up task created</li>
+              <li style="--i:1">Follow-up task created</li>
             </ul>
           </div>
-          <figcaption class="rc-cap"><b>Call summariser</b><span>Notes and next steps, instantly</span></figcaption>
+          <figcaption class="rc-cap"><b>Call summariser</b><span>Notes, instantly</span></figcaption>
         </figure>
         <figure class="reel-card rc-rep">
           <div class="rc-top"><span class="rc-chip"><svg class="ico"><use href="#i-chat"/></svg>Slack</span><span class="rc-live">Live</span></div>
           <div class="rc-body">
             <p class="rep-h">Monday ops report</p>
             <ul class="sum">
-              <li style="--i:0">Orders shipped on time, up on last week</li>
+              <li style="--i:0">Orders shipped on time</li>
               <li style="--i:1">Two suppliers late, emails drafted</li>
               <li style="--i:2">Stock alert on three items</li>
             </ul>
           </div>
-          <figcaption class="rc-cap"><b>Report bot</b><span>The week, written for you</span></figcaption>
+          <figcaption class="rc-cap"><b>Report bot</b><span>The week, written</span></figcaption>
         </figure>
       </div>
     </div>
@@ -345,7 +334,7 @@
             </div>
           </div>
         </div>
-        <a class="pv-more" href="#contact">Talk to us about <span class="pv-more-name">automation solutions</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="pv-more" href="#contact"><span>Talk to us about <span class="pv-more-name">automation solutions</span></span><svg class="ico"><use href="#i-arrow"/></svg></a>
       </div>
     </section>
 
@@ -425,7 +414,7 @@
             </div>
           </div>
         </div>
-        <a class="pv-more" href="#contact">Start with <span class="pv-more-name">Discover</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="pv-more" href="#contact"><span>Start with <span class="pv-more-name">Discover</span></span><svg class="ico"><use href="#i-arrow"/></svg></a>
       </div>
     </section>
 
@@ -580,11 +569,12 @@
           <label><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>
           <label><span>Company</span><input name="company" type="text" autocomplete="organization"></label>
         </div>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="demo-actions">
-          <button class="pill pill-ink" type="submit" value="email"><svg class="ico"><use href="#i-mail"/></svg>Send by email</button>
+          <button class="pill pill-signal" type="submit" value="email"><svg class="ico"><use href="#i-send"/></svg>Send my brief</button>
           <button class="pill pill-soft" type="submit" value="whatsapp"><svg class="ico"><use href="#i-chat"/></svg>Send on WhatsApp</button>
         </div>
-        <p class="demo-done" role="status" hidden>Your email app has opened with the brief. Press send and the Orca team will take it from there.</p>
+        <p class="demo-done" role="status" hidden></p>
       </form>
       <ul class="contact-lines rv">
         <li><a href="mailto:orcaaiofficial1@gmail.com"><svg class="ico"><use href="#i-mail"/></svg>orcaaiofficial1@gmail.com</a></li>
@@ -712,12 +702,13 @@
           <label class="bf"><span>Work email</span><input name="email" type="email" autocomplete="email" required maxlength="200"></label>
           <label class="bf"><span>Phone or WhatsApp</span><input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
         </div>
-        <div class="sp-actions"><button class="sp-back" type="button" data-to="blueprint">Back</button><button class="pill pill-soft" type="submit" value="whatsapp">Send on WhatsApp</button><button class="pill pill-ink" type="submit" value="email">Send by email</button></div>
+        <div class="sp-actions"><button class="sp-back" type="button" data-to="blueprint">Back</button><button class="pill pill-soft" type="submit" value="whatsapp">Send on WhatsApp</button><button class="pill pill-signal" type="submit" value="email">Send my brief</button></div>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       </form>
       <div class="sp" data-panel="done" data-step="4">
-        <h2 class="sp-title">Your brief is ready to send.</h2>
-        <p class="sp-note">We opened it in your email or WhatsApp. Press send, and the Orca team replies with first ideas and a time to talk.</p>
-        <div class="sp-actions"><button class="sp-back" type="button" data-close>Close</button></div>
+        <h2 class="sp-title">Your brief is with Orca AI.</h2>
+        <p class="sp-note">The Orca team will reach out to plan your build.</p>
+        <div class="sp-actions"><button class="sp-back" type="button" data-close>Close</button><a class="pill pill-ink done-alt" href="#" hidden>Send by email</a></div>
       </div>
     </div>
   </div>

@@ -3,6 +3,8 @@
   'use strict';
 
   var EMAIL = 'orcaaiofficial1@gmail.com';
+  var INBOX = 'shadymayezs@gmail.com'; // where every brief is delivered
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + INBOX;
   var WHATSAPP = '201002743113';
   var root = document.documentElement;
   var body = document.body;
@@ -10,7 +12,6 @@
 
   function $(s, el) { return (el || document).querySelector(s); }
   function $$(s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
-  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
 
   /* ---------- Year ---------- */
   $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
@@ -28,20 +29,6 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(startIntro);
   setTimeout(startIntro, 700); // never wait long on fonts
   setTimeout(function () { body.classList.add('entered', 'settled'); }, 2600); // safety net
-
-  /* ---------- Theme toggle ---------- */
-  function currentTheme() {
-    var t = root.getAttribute('data-theme');
-    if (t) return t;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-  $$('.theme-toggle').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var next = currentTheme() === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      store('orca-theme', next);
-    });
-  });
 
   /* ---------- Nav dropdown + mobile sheet ---------- */
   var navItem = $('.nav-item');
@@ -263,12 +250,28 @@
 
   /* ---------- Message helpers ---------- */
   function mailto(subject, text) {
-    return 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
+    return 'mailto:' + INBOX + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
   }
   function wa(text) { return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text); }
-  function send(via, subject, text) {
-    if (via === 'whatsapp') window.open(wa(text), '_blank', 'noopener');
-    else window.location.href = mailto(subject, text);
+  // Deliver a brief to the Orca inbox. Resolves true when the service accepted it.
+  function deliver(fields) {
+    var payload = Object.assign({
+      _subject: fields._subject || 'New Orca AI brief',
+      _template: 'table',
+      _captcha: 'false',
+      page: location.href
+    }, fields);
+    return fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return r.ok && String(j.success) === 'true'; }); })
+      .catch(function () { return false; });
+  }
+  function setBusy(btn, busy, label) {
+    if (!btn) return;
+    if (busy) { btn.dataset.label = btn.textContent; btn.textContent = label || 'Sending...'; btn.disabled = true; }
+    else { btn.textContent = btn.dataset.label || btn.textContent; btn.disabled = false; }
   }
 
   /* ---------- Studio: brief wizard ---------- */
@@ -398,13 +401,41 @@
       e.preventDefault();
       var via = (e.submitter && e.submitter.value) || 'email';
       var d = new FormData(ct);
+      if (d.get('_honey')) return;
+      var plan = brief.blocks.map(function (b) { return b.b; }).join(', ');
       var text = 'Hi Orca AI,\n\nWhat I want to automate:\n' + brief.text +
         '\n\nTools involved: ' + (brief.tools.length ? brief.tools.join(', ') : 'not sure yet') +
-        '\n\nBuilding blocks from the planner:\n' + brief.blocks.map(function (b) { return '- ' + b.b; }).join('\n') +
+        '\nBuilding blocks: ' + plan +
         '\n\nName: ' + d.get('name') + '\nCompany: ' + (d.get('company') || '-') + '\nEmail: ' + d.get('email') + '\nPhone: ' + (d.get('phone') || '-');
-      send(via, 'New AI build brief from ' + d.get('name'), text);
-      step('done');
+      if (via === 'whatsapp') { window.open(wa(text), '_blank', 'noopener'); showDone('whatsapp'); return; }
+      var btn = e.submitter;
+      setBusy(btn, true);
+      deliver({
+        _subject: 'Plan my build: ' + d.get('name') + (d.get('company') ? ' (' + d.get('company') + ')' : ''),
+        name: d.get('name'), email: d.get('email'), company: d.get('company') || '-', phone: d.get('phone') || '-',
+        brief: brief.text, tools: brief.tools.join(', ') || 'not sure yet', blueprint: plan, form: 'Plan my build'
+      }).then(function (ok) {
+        setBusy(btn, false);
+        showDone(ok ? 'sent' : 'failed', mailto('New AI build brief from ' + d.get('name'), text), d.get('email'));
+      });
     });
+    function showDone(state, fallback, email) {
+      var done = $('[data-panel="done"]', studio);
+      var title = $('.sp-title', done), note = $('.sp-note', done), alt = $('.done-alt', done);
+      alt.hidden = true;
+      if (state === 'sent') {
+        title.textContent = 'Your brief is with Orca AI.';
+        note.textContent = 'The Orca team will reach out at ' + email + ' to plan your build.';
+      } else if (state === 'whatsapp') {
+        title.textContent = 'Your brief is ready on WhatsApp.';
+        note.textContent = 'Press send in WhatsApp and the Orca team will take it from there.';
+      } else {
+        title.textContent = 'We could not send that just now.';
+        note.textContent = 'Your brief is safe. Send it by email instead and the Orca team will reply.';
+        alt.href = fallback; alt.hidden = false;
+      }
+      step('done');
+    }
   }
 
   /* ---------- Closing form: brief, then contact details ---------- */
@@ -420,14 +451,31 @@
       e.preventDefault();
       var via = (e.submitter && e.submitter.value) || 'email';
       var d = new FormData(demoStep);
-      var text = 'Hi Orca AI,\n\nWhat I want to automate:\n' + $('#demo-brief').value.trim() +
+      if (d.get('_honey')) return;
+      var briefText = $('#demo-brief').value.trim();
+      var text = 'Hi Orca AI,\n\nWhat I want to automate:\n' + briefText +
         '\n\nName: ' + d.get('name') + '\nCompany: ' + (d.get('company') || '-') + '\nEmail: ' + d.get('email');
-      send(via, 'Orca AI call request from ' + d.get('name'), text);
       var done = $('.demo-done', demoStep);
-      done.textContent = via === 'whatsapp'
-        ? 'WhatsApp has opened with your brief. Press send and the Orca team will take it from there.'
-        : 'Your email app has opened with the brief. Press send and the Orca team will take it from there.';
-      done.hidden = false;
+      if (via === 'whatsapp') {
+        window.open(wa(text), '_blank', 'noopener');
+        done.textContent = 'WhatsApp has opened with your brief. Press send and the Orca team will take it from there.';
+        done.hidden = false; return;
+      }
+      var btn = e.submitter;
+      setBusy(btn, true);
+      deliver({
+        _subject: 'Call request: ' + d.get('name') + (d.get('company') ? ' (' + d.get('company') + ')' : ''),
+        name: d.get('name'), email: d.get('email'), company: d.get('company') || '-', brief: briefText, form: 'Contact section'
+      }).then(function (ok) {
+        setBusy(btn, false);
+        if (ok) {
+          done.textContent = 'Thanks, ' + d.get('name') + '. Your brief is with the Orca team and we will reach out at ' + d.get('email') + '.';
+          demoStep.reset();
+        } else {
+          done.innerHTML = 'We could not send that just now. <a class="done-link" href="' + mailto('Orca AI call request from ' + d.get('name'), text) + '">Send it by email instead</a>.';
+        }
+        done.hidden = false;
+      });
     });
   }
   // Playbook cards prefill the closing brief
